@@ -5,10 +5,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
 import pojos.RespuestaLogin;
 import util.Constantes;
@@ -55,7 +59,7 @@ public class FXMLInicioSesionController implements Initializable {
                 Utilidades.mostrarAlertaSimple("Credenciales correctas", 
                         "Bienvenido "+ respuestaLogin.getNombre()+" "+ respuestaLogin.getApellidoPaterno()
                         , Alert.AlertType.INFORMATION);
-                //irPantallaPrincipal();
+                irPantallaPrincipal();
             }else{
                 Utilidades.mostrarAlertaSimple("Credenciales incorrectas", respuestaLogin.getMensaje(),
                         Alert.AlertType.ERROR);
@@ -66,6 +70,19 @@ public class FXMLInicioSesionController implements Initializable {
         }
         
     }
+    
+    private void irPantallaPrincipal(){
+        
+        try{
+            Parent vista = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            Scene scenaPrincipal = new Scene(vista);
+            Stage scenarioBase = (Stage) tfCorreo.getScene().getWindow();
+            scenarioBase.setScene(scenaPrincipal);
+            scenarioBase.show();            
+        }catch(Exception e){
+            Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal", Alert.AlertType.ERROR);
+        }
+    }    
     
     
     

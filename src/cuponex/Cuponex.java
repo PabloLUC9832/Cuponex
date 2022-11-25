@@ -10,15 +10,29 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Cuponex extends Application {
     
+    double x,y;
+    
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLInicioSesion.fxml"));
         
+        String ruta = "FXMLPrincipal.fxml"; //FXMLPrincipal.fxml FXMLInicioSesion.fxml
+        
+        Parent root = FXMLLoader.load(getClass().getResource(ruta));
+       root.setOnMousePressed(event -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+        
+        root.setOnMouseDragged(event->{
+            primaryStage.setX(event.getScreenX()-x);
+            primaryStage.setY(event.getScreenY()-y);        
+        });        
         Scene scene = new Scene(root);
-        
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

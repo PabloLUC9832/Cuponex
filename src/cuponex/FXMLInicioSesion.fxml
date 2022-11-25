@@ -12,6 +12,11 @@
 <AnchorPane id="AnchorPane" prefHeight="475.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cuponex.FXMLInicioSesionController">
     
    <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="107.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/cuponexLogo.jpg" />
+         </image>
+      </ImageView>
       <Label alignment="CENTER" layoutX="98.0" layoutY="188.0" prefHeight="39.0" prefWidth="220.0" text="Correo" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="17.0" />
@@ -37,7 +42,7 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="154.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="109.0" fitWidth="114.0" layoutX="155.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/icon_login.png" />
          </image>
