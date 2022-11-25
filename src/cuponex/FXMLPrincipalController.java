@@ -26,7 +26,7 @@ public class FXMLPrincipalController implements Initializable {
     @FXML
     private Label btnMenu2;
     @FXML
-    private Label etiquetaPuesto;
+    private Label labelUsuario;
     @FXML
     private AnchorPane slider;
     @FXML
@@ -115,8 +115,11 @@ public class FXMLPrincipalController implements Initializable {
             alert.setContentText(errorMessage);
             alert.showAndWait();
         }      
-    }           
-        
+    }                   
+    
+    public void getDatos(String datos){
+        labelUsuario.setText("Bienvenido "+datos);
+    }     
     
     
 }

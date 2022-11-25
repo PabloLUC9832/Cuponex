@@ -24,7 +24,9 @@ public class FXMLInicioSesionController implements Initializable {
     private TextField tfCorreo;
     @FXML
     private PasswordField pfPassword;
-
+    
+    String datosAdministrador;
+            
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -59,6 +61,7 @@ public class FXMLInicioSesionController implements Initializable {
                 Utilidades.mostrarAlertaSimple("Credenciales correctas", 
                         "Bienvenido "+ respuestaLogin.getNombre()+" "+ respuestaLogin.getApellidoPaterno()
                         , Alert.AlertType.INFORMATION);
+                datosAdministrador = respuestaLogin.getNombre()+" "+ respuestaLogin.getApellidoPaterno();
                 irPantallaPrincipal();
             }else{
                 Utilidades.mostrarAlertaSimple("Credenciales incorrectas", respuestaLogin.getMensaje(),
@@ -74,7 +77,14 @@ public class FXMLInicioSesionController implements Initializable {
     private void irPantallaPrincipal(){
         
         try{
-            Parent vista = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLPrincipal.fxml"));
+            //Parent vista = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+            Parent vista = (Parent) fxmlLoader.load();
+            
+            FXMLPrincipalController administrador = fxmlLoader.getController();
+            administrador.getDatos(datosAdministrador);
+            
+            
             Scene scenaPrincipal = new Scene(vista);
             Stage scenarioBase = (Stage) tfCorreo.getScene().getWindow();
             scenarioBase.setScene(scenaPrincipal);

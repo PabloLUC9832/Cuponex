@@ -19,7 +19,7 @@ public class Cuponex extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         
-        String ruta = "FXMLPrincipal.fxml"; //FXMLPrincipal.fxml FXMLInicioSesion.fxml
+        String ruta = "FXMLInicioSesion.fxml"; //FXMLPrincipal.fxml FXMLInicioSesion.fxml
         
         Parent root = FXMLLoader.load(getClass().getResource(ruta));
        root.setOnMousePressed(event -> {

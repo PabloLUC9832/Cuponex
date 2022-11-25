@@ -41,7 +41,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="etiquetaPuesto" layoutX="800.0" layoutY="24.0" text="Label" />
+                  <Label fx:id="labelUsuario" layoutX="740.0" layoutY="24.0" text="Label" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="381.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imagenes/cuponexLogo.jpg" />
