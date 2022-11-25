@@ -37,6 +37,33 @@ public class ConexionServiciosweb {
         return resultado;
     }
     
+    public static String peticionServicioGET(String url) throws IOException {
+       
+        String resultado = "";
+        URL urlAcceso = new URL(url);
+        HttpURLConnection conexionHTTP = (HttpURLConnection) urlAcceso.openConnection();
+        conexionHTTP.setRequestMethod("GET");
+        //Realizamos la invocación del servicio
+        int codigoRespuesta = conexionHTTP.getResponseCode();
+        System.out.println("Código de respuesta obtenido en peticón es: "+codigoRespuesta);
+        
+        if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+            InputStreamReader isr = new InputStreamReader(conexionHTTP.getInputStream())  ; 
+            BufferedReader in = new BufferedReader(isr);
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while( (inputLine = in.readLine()) != null ){
+                response.append(inputLine);
+            }
+            in.close();
+            resultado = response.toString();
+        }else{
+            resultado = "Error en la petición GET con código: "+ codigoRespuesta;
+        }
+        
+        return resultado;
+    }    
     
     private static String convierteStreamCadena(InputStream streamServicio) throws IOException{
         

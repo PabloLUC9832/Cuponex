@@ -78,8 +78,13 @@ public class FXMLPrincipalController implements Initializable {
         });         
     }    
 
-    @FXML
-    private void pantallaAdministrador(ActionEvent event) {
+    @FXML    
+    private void pantallaAdministrador(ActionEvent event) throws IOException {
+
+        /*Parent fxml = FXMLLoader.load(getClass().getResource("/administrador/FXMLEditarAdministrador.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);*/
+        cargarPantalla("administrador", "FXMLEditarAdministrador");
     }
 
     @FXML
@@ -121,5 +126,10 @@ public class FXMLPrincipalController implements Initializable {
         labelUsuario.setText("Bienvenido "+datos);
     }     
     
+    public void cargarPantalla(String paquete,String nombre) throws IOException{
+        Parent fxml = FXMLLoader.load(getClass().getResource("/"+paquete+"/"+nombre+".fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);        
+    }
     
 }
