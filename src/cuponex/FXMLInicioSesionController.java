@@ -88,6 +88,7 @@ public class FXMLInicioSesionController implements Initializable {
             Scene scenaPrincipal = new Scene(vista);
             Stage scenarioBase = (Stage) tfCorreo.getScene().getWindow();
             scenarioBase.setScene(scenaPrincipal);
+            scenarioBase.centerOnScreen();
             scenarioBase.show();            
         }catch(Exception e){
             Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal", Alert.AlertType.ERROR);

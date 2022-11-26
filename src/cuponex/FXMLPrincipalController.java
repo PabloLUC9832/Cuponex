@@ -75,7 +75,7 @@ public class FXMLPrincipalController implements Initializable {
                 btnMenu1.setVisible(false);
             });
             
-        });         
+        });
     }    
 
     @FXML    
@@ -84,7 +84,7 @@ public class FXMLPrincipalController implements Initializable {
         /*Parent fxml = FXMLLoader.load(getClass().getResource("/administrador/FXMLEditarAdministrador.fxml"));
         contentArea.getChildren().removeAll();
         contentArea.getChildren().setAll(fxml);*/
-        cargarPantalla("administrador", "FXMLEditarAdministrador");
+        cargarPantalla("administrador", "FXMLGeneralAdministrador");
     }
 
     @FXML

@@ -2,6 +2,7 @@ package administrador;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -19,9 +20,16 @@ import modelo.ConexionServiciosweb;
 import pojos.Administrador;
 import util.Constantes;
 import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import util.Utilidades;
 
-public class FXMLEditarAdministradorController implements Initializable {
+public class FXMLGeneralAdministradorController implements Initializable {
 
     @FXML
     private TableView<Administrador> tbAdministrador;    
@@ -35,30 +43,20 @@ public class FXMLEditarAdministradorController implements Initializable {
     private TableColumn tcMaterno;
     @FXML
     private TableColumn tcCorreo;
-    @FXML
-    private TextField tfNombre;
-    @FXML
-    private TextField tfMaterno;
-    @FXML
-    private TextField tfPaterno;
-    @FXML
-    private TextField tfCorreo;
 
     private ObservableList<Administrador> listaAdministradores;
+    @FXML
+    private Button btnnAdd;
+    @FXML
+    private Button btEdit;
+    @FXML
+    private Button btnDelete;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarColumnasTabla();
         cargarInformacionMedicos();
     }    
-
-    @FXML
-    private void clicCancelar(ActionEvent event) {
-    }
-
-    @FXML
-    private void clicGuardar(ActionEvent event) {
-    }
     
     private void inicializarColumnasTabla(){
         
@@ -88,6 +86,30 @@ public class FXMLEditarAdministradorController implements Initializable {
         }
         
     }    
+
+    @FXML
+    private void ventanaAdd(ActionEvent event) {
+        
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaAdministrador.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir administrador");
+            stage.centerOnScreen();            
+            stage.show();
+            
+        }catch(IOException e){
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+        }         
+        
+        
+    }
     
     
 }
