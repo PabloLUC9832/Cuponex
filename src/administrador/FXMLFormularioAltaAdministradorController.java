@@ -33,6 +33,8 @@ public class FXMLFormularioAltaAdministradorController implements Initializable 
     private PasswordField pfPassword;
     @FXML
     private Button btnCancelar;
+    @FXML
+    private Button btnGuardar;
 
     /**
      * Initializes the controller class.
@@ -106,6 +108,8 @@ public class FXMLFormularioAltaAdministradorController implements Initializable 
                 
                 Utilidades.mostrarAlertaSimple("Admiistrador añadido", " Administrador añadido correctamente "
                         , Alert.AlertType.INFORMATION);  
+                Stage stage = (Stage) this.btnGuardar.getScene().getWindow();
+                stage.close();
             }else{
                 Utilidades.mostrarAlertaSimple("Error al añadir admiistrador", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);

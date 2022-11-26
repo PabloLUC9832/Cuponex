@@ -63,7 +63,62 @@ public class ConexionServiciosweb {
         }
         
         return resultado;
+    }
+    
+    public static String peticionServicioPUT(String url,String parametros) throws IOException{       
+        
+        String resultado = "";
+        URL urlAcceso = new URL(url);
+        HttpURLConnection conexionHTTP = (HttpURLConnection) urlAcceso.openConnection();
+        conexionHTTP.setRequestMethod("PUT");
+        conexionHTTP.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+        conexionHTTP.setDoOutput(true);
+        
+        OutputStream outputSalida = conexionHTTP.getOutputStream() ;
+        outputSalida.write(parametros.getBytes());
+        outputSalida.flush();
+        outputSalida.close();
+
+        int codigoRespuesta = conexionHTTP.getResponseCode();
+        System.out.println("El código de respuesta es: "+ codigoRespuesta);
+        
+        if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+            resultado = convierteStreamCadena(conexionHTTP.getInputStream());
+        }else{
+            resultado = "Error en la petición PUT con código: "+codigoRespuesta;
+        }
+        
+        return resultado;
+    }
+    
+    public static String peticionServicioDelete(String url,String parametros) throws IOException{       
+        
+        String resultado = "";
+        URL urlAcceso = new URL(url);
+        HttpURLConnection conexionHTTP = (HttpURLConnection) urlAcceso.openConnection();
+        conexionHTTP.setRequestMethod("DELETE");
+        conexionHTTP.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+        conexionHTTP.setDoOutput(true);
+        
+        OutputStream outputSalida = conexionHTTP.getOutputStream() ;
+        outputSalida.write(parametros.getBytes());
+        outputSalida.flush();
+        outputSalida.close();
+
+        int codigoRespuesta = conexionHTTP.getResponseCode();
+        System.out.println("El código de respuesta es: "+ codigoRespuesta);
+        
+        if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+            resultado = convierteStreamCadena(conexionHTTP.getInputStream());
+        }else{
+            resultado = "Error en la petición DELETE con código: "+codigoRespuesta;
+        }
+        
+        return resultado;
     }    
+    
     
     private static String convierteStreamCadena(InputStream streamServicio) throws IOException{
         

@@ -26,7 +26,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pojos.Respuesta;
 import util.Utilidades;
 
 public class FXMLGeneralAdministradorController implements Initializable {
@@ -46,11 +48,11 @@ public class FXMLGeneralAdministradorController implements Initializable {
 
     private ObservableList<Administrador> listaAdministradores;
     @FXML
-    private Button btnnAdd;
-    @FXML
     private Button btEdit;
     @FXML
     private Button btnDelete;
+    @FXML
+    private Button btnAdd;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -108,6 +110,103 @@ public class FXMLGeneralAdministradorController implements Initializable {
             alert.showAndWait();
         }         
         
+        
+    }
+
+    @FXML
+    private void ventanaEdit(ActionEvent event) {
+       
+        int filaSeleccionada = tbAdministrador.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idAdministradorSeleccionado = listaAdministradores.get(filaSeleccionada).getIdAdministrador();
+                String nombre = listaAdministradores.get(filaSeleccionada).getNombre();
+                String apellidoPaterno = listaAdministradores.get(filaSeleccionada).getApellidoPaterno();
+                String apellidoMaterno = listaAdministradores.get(filaSeleccionada).getApellidoMaterno();
+                String correo = listaAdministradores.get(filaSeleccionada).getCorreo();
+                String password = listaAdministradores.get(filaSeleccionada).getPassword();            
+
+                FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioEdicionAdministrador.fxml"));
+                Parent vistaFormulario = loadController.load();
+                FXMLFormularioEdicionAdministradorController controllerFormulario = loadController.getController();
+                
+                controllerFormulario.inicializarInformacionVentana(idAdministradorSeleccionado, nombre, apellidoPaterno, apellidoMaterno, correo, password);
+                
+                Scene escenaFormulario = new Scene(vistaFormulario);
+                Stage escenarioFormulario = new Stage();
+                escenarioFormulario.setScene(escenaFormulario);
+                escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+                escenarioFormulario.showAndWait();
+                
+            }catch(IOException e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+                    , Alert.AlertType.WARNING);
+        } 
+               
+        
+    }
+
+    @FXML
+    private void eliminar(ActionEvent event) {
+        
+        int filaSeleccionada = tbAdministrador.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idAdministradorSeleccionado = listaAdministradores.get(filaSeleccionada).getIdAdministrador();
+          
+                if(Utilidades.mostrarAlertaEliminacion("Elminar", "administrador")==true){
+                    consumirServicioEliminar(idAdministradorSeleccionado);
+                }
+                
+            }catch(Exception e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+                    , Alert.AlertType.WARNING);
+        }        
+        
+        
+    }
+    
+    private void consumirServicioEliminar(int idAdministrador){
+        
+        try{
+            
+            String urlServicio = Constantes.URL_BASE+"administradores/eliminar";
+            
+            String parametros = "idAdministrador=" + idAdministrador;
+            String resultadoWS = ConexionServiciosweb.peticionServicioDelete(urlServicio, parametros);
+            Gson gson = new Gson() ;
+            Respuesta respuesta = gson.fromJson(resultadoWS, Respuesta.class);
+            
+            if (!respuesta.getError()) {
+                
+                Utilidades.mostrarAlertaSimple("Usuario eliminado", 
+                        " Usuario eliminado correctamente "
+                        , Alert.AlertType.INFORMATION);
+            }else{
+                Utilidades.mostrarAlertaSimple("Error al eliminar el usuario", respuesta.getMensaje(),
+                        Alert.AlertType.ERROR);
+            }            
+            
+            
+        }catch(Exception e){
+            Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
+        }
         
     }
     

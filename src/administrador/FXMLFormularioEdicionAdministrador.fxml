@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrador.FXMLFormularioAltaAdministradorController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="administrador.FXMLFormularioEdicionAdministradorController">
    <children>
-      <Label layoutX="206.0" layoutY="39.0" text="Registro de Administradores">
+      <Label layoutX="206.0" layoutY="39.0" text="Actualización de datos">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a registrar" />
+      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a actualizar" />
       <Label layoutX="39.0" layoutY="145.0" text="Nombre (s)" />
       <Label layoutX="39.0" layoutY="200.0" text="Apellido Paterno" />
       <Label layoutX="39.0" layoutY="253.0" text="Apellido Materno" />
@@ -25,7 +25,7 @@
       <TextField fx:id="tfMaterno" layoutX="37.0" layoutY="270.0" prefHeight="25.0" prefWidth="189.0" promptText="Ingresa tu apellido materno" />
       <TextField fx:id="tfCorreo" layoutX="320.0" layoutY="163.0" prefHeight="25.0" prefWidth="255.0" promptText="Ingresa tu correo" />
       <PasswordField fx:id="pfPassword" layoutX="321.0" layoutY="218.0" />
-      <Button fx:id="btnGuardar" layoutX="321.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicGuardarAdministrador" text="Guardar" />
+      <Button fx:id="btnActualizar" layoutX="321.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicActualizarAdministrador" text="Actualizar" />
       <Button fx:id="btnCancelar" layoutX="243.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar" />
-   </children>
+   </children>    
 </AnchorPane>
