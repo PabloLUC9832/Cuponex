@@ -28,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import pojos.Catalogo;
 import pojos.Respuesta;
 import util.Utilidades;
 
@@ -46,7 +47,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
     @FXML
     private TableColumn tcCorreo;
 
-    private ObservableList<Administrador> listaAdministradores;
+    private ObservableList<Administrador> listaAdministradores;    
     @FXML
     private Button btEdit;
     @FXML
@@ -62,7 +63,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
     
     private void inicializarColumnasTabla(){
         
-        listaAdministradores = FXCollections.observableArrayList();
+        listaAdministradores = FXCollections.observableArrayList();        
         tcId.setCellValueFactory(new PropertyValueFactory("idAdministrador"));
         tcNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         tcPaterno.setCellValueFactory(new PropertyValueFactory("apellidoPaterno"));
@@ -88,7 +89,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
         }
         
     }    
-
+        
     @FXML
     private void ventanaAdd(ActionEvent event) {
         

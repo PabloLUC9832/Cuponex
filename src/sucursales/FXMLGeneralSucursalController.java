@@ -24,7 +24,11 @@ import java.lang.reflect.Type;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 
 public class FXMLGeneralSucursalController implements Initializable {
@@ -79,6 +83,25 @@ public class FXMLGeneralSucursalController implements Initializable {
 
     @FXML
     private void ventanaAdd(ActionEvent event) {
+        
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaSucursal.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir administrador");
+            stage.centerOnScreen();            
+            stage.show();
+            
+        }catch(IOException e){
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+        }          
+        
     }
 
     @FXML

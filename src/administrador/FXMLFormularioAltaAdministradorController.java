@@ -36,9 +36,6 @@ public class FXMLFormularioAltaAdministradorController implements Initializable 
     @FXML
     private Button btnGuardar;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
