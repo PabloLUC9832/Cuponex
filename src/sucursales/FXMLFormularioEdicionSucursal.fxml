@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="sucursales.FXMLFormularioEdicionSucursalController">
+   <children>
+      <Label layoutX="231.0" layoutY="23.0" text="Actualización de datos">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="88.0" layoutY="53.0" text="Por favor, llena el siguiente formulario con la información de la sucursal a actualizar" />
+      <Label layoutX="39.0" layoutY="79.0" text="Nombre" />
+      <TextField fx:id="tfNombre" layoutX="36.0" layoutY="97.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el nombre" />
+      <Label layoutX="39.0" layoutY="134.0" text="Dirección" />
+      <TextField fx:id="tfDireccion" layoutX="37.0" layoutY="152.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa la dirección" />
+      <Label layoutX="39.0" layoutY="187.0" text="Código Postal" />
+      <TextField fx:id="tfCP" layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el código postal" />
+      <Label layoutX="36.0" layoutY="243.0" text="Colonia" />
+      <TextField fx:id="tfColonia" layoutX="36.0" layoutY="261.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa la colonia" />
+      <Label layoutX="34.0" layoutY="300.0" text="Ciudad" />
+      <TextField fx:id="tfCiudad" layoutX="36.0" layoutY="324.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa la ciudad" />
+      <Label layoutX="305.0" layoutY="79.0" text="Teléfono" />
+      <TextField fx:id="tfTelefono" layoutX="307.0" layoutY="103.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el teléfono" />
+      <Label layoutX="305.0" layoutY="134.0" text="Latitud" />
+      <TextField fx:id="tfLatitud" layoutX="307.0" layoutY="152.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa la latitud" />
+      <Label layoutX="310.0" layoutY="187.0" text="Longitud" />
+      <TextField fx:id="tfLongitud" layoutX="307.0" layoutY="204.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa la longitud" />
+      <Label layoutX="310.0" layoutY="240.0" text="Encargado" />
+      <TextField fx:id="tfEncargado" layoutX="307.0" layoutY="257.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el nombre encargado" />
+      <Label layoutX="310.0" layoutY="303.0" text="Empresa" />
+      <ComboBox fx:id="cbEmpresa" layoutX="305.0" layoutY="324.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la empresa" />
+      <Button fx:id="btnActualizar" layoutX="321.0" layoutY="361.0" mnemonicParsing="false" onAction="#clicActualizarSucursal" text="Actualizar" />
+      <Button fx:id="btnCancelar" layoutX="243.0" layoutY="361.0" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar" />
+   </children>    
+</AnchorPane>

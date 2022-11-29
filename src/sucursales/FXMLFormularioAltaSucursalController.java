@@ -51,18 +51,14 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
     private Button btnGuardar;
     @FXML
     private Button btnCancelar;
-    
-    //private ObservableList<Empresa> listaEmpresa; 
-    
-
+       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tfNombre.addEventHandler(KeyEvent.KEY_TYPED, event -> soloLetras(event));
         tfCP.addEventHandler(KeyEvent.KEY_TYPED, event -> soloNumeros(event));
         tfTelefono.addEventHandler(KeyEvent.KEY_TYPED, event -> soloNumeros(event));
         
-        //listaEmpresa = FXCollections.observableArrayList();
-        cbEmpresa.setItems(cargarInformacionRoles()); 
+        cbEmpresa.setItems(cargarInformacionEmpresas()); 
         
     }    
 
@@ -163,8 +159,7 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
         }
     }
     
-    //private void cargarInformacionRoles(){
-    private ObservableList<Empresa> cargarInformacionRoles(){
+    private ObservableList<Empresa> cargarInformacionEmpresas(){
         String urlWS = Constantes.URL_BASE+"empresas/all";
         ObservableList<Empresa> listaEmpresa;
         listaEmpresa = FXCollections.observableArrayList();        
@@ -173,9 +168,7 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
             Gson gson = new Gson();
             Type  listaEmpresas = new TypeToken<ArrayList <Empresa> >() {}.getType();
             ArrayList catalogoWS = gson.fromJson(resultadoWS, listaEmpresas);
-            
-            //ObservableList<Empresa> listaEmpresa;
-            //listaEmpresa = FXCollections.observableArrayList();
+
             listaEmpresa.addAll(catalogoWS);
         }catch(Exception e){
             e.printStackTrace();
@@ -184,7 +177,5 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
         }
         return listaEmpresa;
     }        
-    
-    
-    
+        
 }

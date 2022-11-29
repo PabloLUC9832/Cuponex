@@ -28,6 +28,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
@@ -106,10 +107,81 @@ public class FXMLGeneralSucursalController implements Initializable {
 
     @FXML
     private void ventanaEdit(ActionEvent event) {
+        
+        int filaSeleccionada = tbSucursal.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idSucursalSeleccionado = listaSucursales.get(filaSeleccionada).getIdSucursal();
+                String nombre = listaSucursales.get(filaSeleccionada).getNombre();
+                String direccion = listaSucursales.get(filaSeleccionada).getDireccion();
+                Integer cp = listaSucursales.get(filaSeleccionada).getCodigoPostal();
+                String colonia = listaSucursales.get(filaSeleccionada).getColonia();
+                String ciudad = listaSucursales.get(filaSeleccionada).getCiudad();
+                Integer telefono  = listaSucursales.get(filaSeleccionada).getTelefono();
+                String latitud = listaSucursales.get(filaSeleccionada).getLatitud();
+                String longitud = listaSucursales.get(filaSeleccionada).getLongitud();
+                String encargado = listaSucursales.get(filaSeleccionada).getEncargado();
+                Integer idEmpresa = listaSucursales.get(filaSeleccionada).getIdEmpresa();
+
+                FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioEdicionSucursal.fxml"));
+                Parent vistaFormulario = loadController.load();
+                FXMLFormularioEdicionSucursalController controllerFormulario = loadController.getController();
+                
+                controllerFormulario.inicializarInformacionVentana(idSucursalSeleccionado, nombre, direccion,cp, 
+                                                                   colonia, ciudad,telefono,latitud,
+                                                                   longitud,encargado,idEmpresa
+                                                                   );
+                
+                Scene escenaFormulario = new Scene(vistaFormulario);
+                Stage escenarioFormulario = new Stage();
+                escenarioFormulario.setScene(escenaFormulario);
+                escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+                escenarioFormulario.showAndWait();
+                
+            }catch(IOException e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+                    , Alert.AlertType.WARNING);
+        }         
+        
+        
     }
 
     @FXML
     private void eliminar(ActionEvent event) {
+        
+        int filaSeleccionada = tbSucursal.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idSucursalSeleccionado = listaSucursales.get(filaSeleccionada).getIdSucursal();
+          
+                if(Utilidades.mostrarAlertaEliminacion("Elminar", "sucursal")==true){
+                    consumirServicioEliminar(idSucursalSeleccionado);
+                }
+                
+            }catch(Exception e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+                    , Alert.AlertType.WARNING);
+        }        
+                
+        
+        
+        
     }
  
     private void busqueda() throws Exception{
@@ -180,7 +252,36 @@ public class FXMLGeneralSucursalController implements Initializable {
                     , Alert.AlertType.ERROR);
         }
         
-    }    
+    }
+    
+    private void consumirServicioEliminar(int idSucursal){
+        
+        try{
+            
+            String urlServicio = Constantes.URL_BASE+"sucursales/eliminar";
+            
+            String parametros = "idSucursal=" + idSucursal;
+            String resultadoWS = ConexionServiciosweb.peticionServicioDelete(urlServicio, parametros);
+            Gson gson = new Gson() ;
+            Respuesta respuesta = gson.fromJson(resultadoWS, Respuesta.class);
+            
+            if (!respuesta.getError()) {
+                
+                Utilidades.mostrarAlertaSimple("Sucursal eliminada", 
+                        "Sucursal eliminado correctamente "
+                        , Alert.AlertType.INFORMATION);
+            }else{
+                Utilidades.mostrarAlertaSimple("Error al eliminar al administrador", respuesta.getMensaje(),
+                        Alert.AlertType.ERROR);
+            }            
+            
+            
+        }catch(Exception e){
+            Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
+        }
+        
+    }
+    
     
     
     

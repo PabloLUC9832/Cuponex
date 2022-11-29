@@ -196,11 +196,11 @@ public class FXMLGeneralAdministradorController implements Initializable {
             
             if (!respuesta.getError()) {
                 
-                Utilidades.mostrarAlertaSimple("Usuario eliminado", 
-                        " Usuario eliminado correctamente "
+                Utilidades.mostrarAlertaSimple("Administrador eliminado", 
+                        " Administrador eliminado correctamente "
                         , Alert.AlertType.INFORMATION);
             }else{
-                Utilidades.mostrarAlertaSimple("Error al eliminar el usuario", respuesta.getMensaje(),
+                Utilidades.mostrarAlertaSimple("Error al eliminar el administrador", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
             }            
             
