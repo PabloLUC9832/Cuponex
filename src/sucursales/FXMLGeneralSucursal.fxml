@@ -29,5 +29,6 @@
       <Button fx:id="btnDelete" layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Label layoutX="35.0" layoutY="102.0" text="Ingresa tu búsqueda" />
       <TextField fx:id="tfBusqueda" layoutX="168.0" layoutY="98.0" prefHeight="25.0" prefWidth="323.0" promptText="Ingresa el nombre de la sucusal a buscar" />
+      <Button fx:id="btnBuscar" layoutX="519.0" layoutY="98.0" mnemonicParsing="false" onAction="#busqueda" text="Button" />
    </children>    
 </AnchorPane>

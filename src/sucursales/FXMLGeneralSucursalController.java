@@ -68,6 +68,8 @@ public class FXMLGeneralSucursalController implements Initializable {
     private TextField tfBusqueda;
     
     private ObservableList<Sucursal> listaSucursales;
+    @FXML
+    private Button btnBuscar;
 
 
     @Override
@@ -75,11 +77,13 @@ public class FXMLGeneralSucursalController implements Initializable {
         inicializarColumnasTabla();
         cargarInformacionSucursales();
         try {
-            busqueda();
+            //busqueda();
+            buscar();
         } catch (Exception ex) {
             Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las sucursales" + ex
                     , Alert.AlertType.ERROR);        
         }
+        
     }    
 
     @FXML
@@ -184,7 +188,22 @@ public class FXMLGeneralSucursalController implements Initializable {
         
     }
  
+    @FXML
     private void busqueda() throws Exception{
+        
+        /*
+        tfBusqueda.setOnKeyReleased((e) -> {
+
+            consumirServicioBusqueda(tfBusqueda.getText());
+        
+        });
+        */
+        consumirServicioBusqueda(tfBusqueda.getText());
+        
+    }
+    
+    private void buscar() throws Exception{
+        
         
         tfBusqueda.setOnKeyReleased((e) -> {
 
@@ -192,21 +211,23 @@ public class FXMLGeneralSucursalController implements Initializable {
         
         });
         
+        //consumirServicioBusqueda(tfBusqueda.getText());
         
-        
-    }
+    }    
     
     
     private void consumirServicioBusqueda(String nombre){
         String urlWS = Constantes.URL_BASE+"sucursales/byNombre/"+nombre;
         try{
             String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
+            System.out.println("respuesta::::::: "+resultadoWS);
             Gson gson = new Gson();
             Type  listaTipoSucursal = new TypeToken<ArrayList <Sucursal> >() {}.getType();
             ArrayList sucursalWS = gson.fromJson(resultadoWS, listaTipoSucursal);
+            listaSucursales.clear();
             listaSucursales.addAll(sucursalWS);
             tbSucursal.setItems(listaSucursales);
-                    
+            System.out.println("-----\n"+ sucursalWS);
         }catch(Exception e){
             e.printStackTrace();
             Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las sucursales:|" +e 
