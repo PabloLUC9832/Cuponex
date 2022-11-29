@@ -92,7 +92,8 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    private void pantallaSucursal(ActionEvent event) {
+    private void pantallaSucursal(ActionEvent event) throws IOException {
+        cargarPantalla("sucursales", "FXMLGeneralSucursal");        
     }
 
     @FXML

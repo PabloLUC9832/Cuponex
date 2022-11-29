@@ -57,7 +57,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         inicializarColumnasTabla();
-        cargarInformacionMedicos();
+        cargarInformacionAdministradores();
     }    
     
     private void inicializarColumnasTabla(){
@@ -71,7 +71,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
         
     }
     
-    private void cargarInformacionMedicos(){
+    private void cargarInformacionAdministradores(){
         String urlWS = Constantes.URL_BASE+"administradores/all";
         try{
             String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
@@ -83,7 +83,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
                     
         }catch(Exception e){
             e.printStackTrace();
-            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los médicos"
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los administradores"
                     , Alert.AlertType.ERROR);
         }
         
