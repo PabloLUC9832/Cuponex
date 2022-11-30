@@ -88,7 +88,8 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    private void pantallaEmpresa(ActionEvent event) {
+    private void pantallaEmpresa(ActionEvent event) throws IOException {
+        cargarPantalla("empresa", "FXMLGeneralEmpresa");
     }
 
     @FXML

@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="promociones.FXMLGeneralPromocionController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLGeneralPromocionController">
    <children>
       <TableView fx:id="tbPromocion" layoutX="17.0" layoutY="160.0" prefHeight="270.0" prefWidth="667.0">
         <columns>
@@ -21,15 +21,15 @@
             <TableColumn fx:id="tcPorcentaje" prefWidth="68.0" text="Porcentaje" />
             <TableColumn fx:id="tcCostoPromocion" prefWidth="58.333343505859375" text="Costo Promocion" />
             <TableColumn fx:id="tcCategoriaPromocion" prefWidth="70.66668701171875" text="Categoria Promocion" />
-            <TableColumn fx:id="tcEstatus" prefWidth="83.0" text="Estatus" />
-            <TableColumn fx:id="tcSucursal" prefWidth="69.0" text="Sucursal" />
+            <TableColumn fx:id="tcEstatus" prefWidth="91.0" text="Estatus" />
+            <TableColumn fx:id="tcSucursal" prefWidth="61.0" text="Sucursal" />
         </columns>
       </TableView>
       <Button fx:id="btnAdd" layoutX="168.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaAdd" text="Añadir" />
       <Button fx:id="btEdit" layoutX="324.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaEdit" text="Editar" />
       <Button fx:id="btnDelete" layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
       <Label layoutX="17.0" layoutY="102.0" text="Ingresa tu búsqueda" />
-      <TextField fx:id="tfBusqueda" layoutX="143.0" layoutY="98.0" prefHeight="25.0" prefWidth="509.0" promptText="Ingresa la fecha de inicio, fecha de termino o nombre o la dirección de la promocion a buscar" />
+      <TextField fx:id="tfBusqueda" layoutX="143.0" layoutY="98.0" prefHeight="25.0" prefWidth="440.0" promptText="Ingresa la fecha de inicio, fecha de termino o nombre de la promocion a buscar" />
    </children>    
     
 </AnchorPane>
