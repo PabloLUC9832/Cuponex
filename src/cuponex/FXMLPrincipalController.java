@@ -121,12 +121,12 @@ public class FXMLPrincipalController implements Initializable {
             alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
             alert.setContentText(errorMessage);
             alert.showAndWait();
-        }      
-    }                   
+        }
+    }
     
     public void getDatos(String datos){
         labelUsuario.setText("Bienvenido "+datos);
-    }     
+    }
     
     public void cargarPantalla(String paquete,String nombre) throws IOException{
         Parent fxml = FXMLLoader.load(getClass().getResource("/"+paquete+"/"+nombre+".fxml"));

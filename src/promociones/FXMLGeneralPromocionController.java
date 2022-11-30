@@ -2,6 +2,7 @@ package promociones;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,8 +18,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pojos.Promocion;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
+import pojos.Respuesta;
 import util.Constantes;
 import util.Utilidades;
 
@@ -75,6 +81,25 @@ public class FXMLGeneralPromocionController implements Initializable {
 
     @FXML
     private void ventanaAdd(ActionEvent event) {
+        
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaPromocion.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir administrador");
+            stage.centerOnScreen();            
+            stage.show();
+            
+        }catch(IOException e){
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+        }         
+        
     }
 
     @FXML
@@ -83,6 +108,25 @@ public class FXMLGeneralPromocionController implements Initializable {
 
     @FXML
     private void eliminar(ActionEvent event) {
+        
+        int filaSeleccionada = tbPromocion.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+            try{                
+                int idPromocionSeleccionado = listaPromociones.get(filaSeleccionada).getIdPromocion();
+          
+                if(Utilidades.mostrarAlertaEliminacion("Elminar", "promocion")==true){
+                    consumirServicioEliminar(idPromocionSeleccionado);
+                }
+                
+            }catch(Exception e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una promoción para su eliminación"
+                    , Alert.AlertType.WARNING);
+        }   
+        
     }
     
     private void inicializarColumnasTabla(){
@@ -156,6 +200,34 @@ public class FXMLGeneralPromocionController implements Initializable {
         }
                         
     }
+    
+    private void consumirServicioEliminar(int idPromocion){
+        
+        try{
+            
+            String urlServicio = Constantes.URL_BASE+"promociones/eliminar";
+            
+            String parametros = "idPromocion=" + idPromocion;
+            String resultadoWS = ConexionServiciosweb.peticionServicioDelete(urlServicio, parametros);
+            Gson gson = new Gson() ;
+            Respuesta respuesta = gson.fromJson(resultadoWS, Respuesta.class);
+            
+            if (!respuesta.getError()) {
+                
+                Utilidades.mostrarAlertaSimple("Promoción eliminada", 
+                        "Promoción eliminado correctamente "
+                        , Alert.AlertType.INFORMATION);
+            }else{
+                Utilidades.mostrarAlertaSimple("Error al eliminar promoción", respuesta.getMensaje(),
+                        Alert.AlertType.ERROR);
+            }            
+            
+            
+        }catch(Exception e){
+            Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
+        }
+        
+    }    
 
     
 

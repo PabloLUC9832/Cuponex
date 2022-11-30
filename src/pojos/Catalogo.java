@@ -31,7 +31,8 @@ public class Catalogo {
 
     @Override
     public String toString() {
-        return nombre;
+        String idCatalogoStr = Integer.toString(idCatalogo);
+        return idCatalogoStr;
     }
     
 }

@@ -119,5 +119,13 @@ public class Sucursal {
     public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
+
+    @Override
+    public String toString() {
+        String idSucursalStr = Integer.toString(idSucursal);
+        return idSucursalStr;
+    }
+    
+    
         
 }
