@@ -88,12 +88,13 @@ public class FXMLGeneralAdministradorController implements Initializable {
                     , Alert.AlertType.ERROR);
         }
         
-    }    
+    }
         
     @FXML
     private void ventanaAdd(ActionEvent event) {
         
         try{
+            /*
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaAdministrador.fxml"));
             Parent ventana = (Parent) fxmlLoader.load();
             Stage stage = new Stage();            
@@ -101,6 +102,19 @@ public class FXMLGeneralAdministradorController implements Initializable {
             stage.setTitle("Añadir administrador");
             stage.centerOnScreen();            
             stage.show();
+            */
+            FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaAdministrador.fxml"));
+            Parent vistaFormulario = loadController.load();
+            FXMLFormularioAltaAdministradorController controllerFormulario = loadController.getController();
+            
+            controllerFormulario.recibir(listaAdministradores, tbAdministrador);
+            
+            Scene escenaFormulario = new Scene(vistaFormulario);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();            
+            
             
         }catch(IOException e){
             String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
@@ -150,8 +164,8 @@ public class FXMLGeneralAdministradorController implements Initializable {
         }else{
             Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
                     , Alert.AlertType.WARNING);
-        } 
-               
+        }
+         
         
     }
 
