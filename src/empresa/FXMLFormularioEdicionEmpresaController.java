@@ -114,7 +114,7 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
     private void clicCancelar(ActionEvent event) {
         Stage stage = (Stage) btnCancelar.getScene().getWindow();        
         stage.close();
-    }
+    } 
     
     private ObservableList<Catalogo> cargarInformacionCatalogo(String idCategoria){
         String urlWS = Constantes.URL_BASE+"catalogos/bycategoria/"+idCategoria;
