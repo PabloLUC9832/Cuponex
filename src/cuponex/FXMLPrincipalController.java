@@ -97,7 +97,8 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     @FXML
-    private void pantallaPromocion(ActionEvent event) {
+    private void pantallaPromocion(ActionEvent event) throws IOException {
+        cargarPantalla("promociones", "FXMLGeneralPromocion");    
     }
 
     @FXML
