@@ -2,6 +2,7 @@ package empresa;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
@@ -10,13 +11,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
 import pojos.Empresa;
 import pojos.Respuesta;
@@ -77,13 +83,77 @@ public class FXMLGeneralEmpresaController implements Initializable {
 
     @FXML
     private void ventanaAdd(ActionEvent event) {
+        
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
+            Parent ventana = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();            
+            stage.setScene(new Scene(ventana));
+            stage.setTitle("Añadir Empresa");
+            stage.centerOnScreen();            
+            stage.show();
+            
+        }catch(IOException e){
+            String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error, No hay conexión con la Base de Datos");
+            alert.setHeaderText(" ¡Por favor! intentelo nuevamente");
+            alert.setContentText(errorMessage);
+            alert.showAndWait();
+        }          
+                
+        
     }
 
     @FXML
     private void ventanaEdit(ActionEvent event) {
 
-        
-        
+        int filaSeleccionada = tbEmpresa.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                int idEmpresaSeleccionado = listaEmpresas.get(filaSeleccionada).getIdEmpresa();
+                String nombre = listaEmpresas.get(filaSeleccionada).getNombre();
+                String nombreComercial = listaEmpresas.get(filaSeleccionada).getNombreComercial() ;
+                String representante = listaEmpresas.get(filaSeleccionada).getNombreRepresentanteLegal() ;
+                String correo = listaEmpresas.get(filaSeleccionada).getCorreo() ;
+                String direccion = listaEmpresas.get(filaSeleccionada).getDireccion() ;
+                Integer cp = listaEmpresas.get(filaSeleccionada).getCodigoPostal() ;
+                String ciudad = listaEmpresas.get(filaSeleccionada).getCiudad() ;
+                Integer telefono = listaEmpresas.get(filaSeleccionada).getTelefono() ;
+                String pagina = listaEmpresas.get(filaSeleccionada).getPaginaWeb() ;
+                String rfc = listaEmpresas.get(filaSeleccionada).getRfc() ;
+                Integer idEstatus = listaEmpresas.get(filaSeleccionada).getIdEstatus() ;
+
+
+                FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioEdicionEmpresa.fxml"));
+                Parent vistaFormulario = loadController.load();
+                FXMLFormularioEdicionEmpresaController controllerFormulario = loadController.getController();
+                
+                controllerFormulario.inicializarInformacionVentana(idEmpresaSeleccionado, nombre,  nombreComercial,
+                                              representante,correo,direccion,
+                                              cp, ciudad, telefono,
+                                              pagina,  rfc,  idEstatus   
+                                            );
+                
+                Scene escenaFormulario = new Scene(vistaFormulario);
+                Stage escenarioFormulario = new Stage();
+                escenarioFormulario.setScene(escenaFormulario);
+                escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+                escenarioFormulario.showAndWait();
+                
+            }catch(IOException e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+                    , Alert.AlertType.WARNING);
+        }         
+               
     }
 
     @FXML

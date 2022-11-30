@@ -90,7 +90,7 @@ public class FXMLGeneralSucursalController implements Initializable {
             Parent ventana = (Parent) fxmlLoader.load();
             Stage stage = new Stage();            
             stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir administrador");
+            stage.setTitle("Añadir Sucursal");
             stage.centerOnScreen();            
             stage.show();
             
