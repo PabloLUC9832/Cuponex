@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -46,6 +47,16 @@
       <ComboBox fx:id="cbEstatus" layoutX="306.0" layoutY="323.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona el estatus" style="-fx-background-color: white;" />
       <Button fx:id="btnGuardar" layoutX="310.0" layoutY="425.0" mnemonicParsing="false" onAction="#clicGuardarEmpresa" style="-fx-background-color: white;" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="232.0" layoutY="425.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="184.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="20.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
    </children>
     
 </AnchorPane>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -42,8 +43,13 @@
       <TextField fx:id="tfEncargado" layoutX="307.0" layoutY="257.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el nombre encargado" />
       <Label layoutX="310.0" layoutY="303.0" text="Empresa" textFill="WHITE" />
       <ComboBox fx:id="cbEmpresa" layoutX="305.0" layoutY="324.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la empresa" style="-fx-background-color: white;" />
-      <Button fx:id="btnGuardar" layoutX="314.0" layoutY="365.0" mnemonicParsing="false" onAction="#clicGuardarSucursal" style="-fx-background-color: white;" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="228.0" layoutY="365.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="322.0" layoutY="366.0" mnemonicParsing="false" onAction="#clicGuardarSucursal" style="-fx-background-color: white;" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="220.0" layoutY="366.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="179.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
    </children>
     
 </AnchorPane>

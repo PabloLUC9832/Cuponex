@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -19,8 +21,38 @@
             <TableColumn fx:id="tcCorreo" prefWidth="161.0" text="Correo" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdd" layoutX="168.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaAdd" style="-fx-background-color: white;" text="Añadir" />
-      <Button fx:id="btEdit" layoutX="324.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaEdit" style="-fx-background-color: white;" text="Editar" />
-      <Button fx:id="btnDelete" layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: white;" text="Eliminar" />
+      <Button fx:id="btnAdd" layoutX="168.0" layoutY="57.0" mnemonicParsing="false" onAction="#ventanaAdd" style="-fx-background-color: white;" text="Añadir" />
+      <Button fx:id="btEdit" layoutX="324.0" layoutY="57.0" mnemonicParsing="false" onAction="#ventanaEdit" style="-fx-background-color: white;" text="Editar" />
+      <Button fx:id="btnDelete" layoutX="493.0" layoutY="57.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: white;" text="Eliminar" />
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="37.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="292.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/editar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="137.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="458.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/eliminar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="286.0" layoutY="8.0" text="Administrador" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="417.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/administradores.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

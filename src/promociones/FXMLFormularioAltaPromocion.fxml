@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -19,7 +20,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="41.0" text="Por favor, llena el siguiente formulario con la información de la promoción a registrar" textFill="WHITE">
+      <Label layoutX="56.0" layoutY="53.0" text="Por favor, llena el siguiente formulario con la información de la promoción a registrar" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font></Label>
@@ -45,7 +46,17 @@
       <ComboBox fx:id="cbEstatus" layoutX="306.0" layoutY="285.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona el estatus" style="-fx-background-color: white;" />
       <Label layoutX="310.0" layoutY="326.0" text="Sucursal" textFill="WHITE" />
       <ComboBox fx:id="cbSucursal" layoutX="307.0" layoutY="350.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la sucursal" style="-fx-background-color: white;" />
-      <Button fx:id="btnGuardar" layoutX="312.0" layoutY="433.0" mnemonicParsing="false" onAction="#clicGuardarPromocion" style="-fx-background-color: white;" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="230.0" layoutY="433.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <Button fx:id="btnGuardar" layoutX="316.0" layoutY="433.0" mnemonicParsing="false" onAction="#clicGuardarPromocion" style="-fx-background-color: white;" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="226.0" layoutY="433.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="171.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
    </children>    
 </AnchorPane>

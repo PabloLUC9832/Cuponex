@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -19,7 +20,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="57.0" layoutY="41.0" text="Por favor, llena el siguiente formulario con la información de la promoción a actualizar" textFill="WHITE">
+      <Label layoutX="57.0" layoutY="52.0" text="Por favor, llena el siguiente formulario con la información de la promoción a actualizar" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font></Label>
@@ -47,5 +48,15 @@
       <ComboBox fx:id="cbSucursal" layoutX="306.0" layoutY="352.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la sucursal" style="-fx-background-color: white;" />
       <Button fx:id="btnActualizar" layoutX="314.0" layoutY="434.0" mnemonicParsing="false" onAction="#clicActualizarPromocion" style="-fx-background-color: white;" text="Actualizar" />
       <Button fx:id="btnCancelar" layoutX="236.0" layoutY="434.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="149.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/editar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
    </children>     
 </AnchorPane>

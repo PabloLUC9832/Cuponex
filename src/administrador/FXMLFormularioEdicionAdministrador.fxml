@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -34,5 +35,15 @@
       <PasswordField fx:id="pfPassword" layoutX="321.0" layoutY="218.0" promptText="•••••••••••••••" />
       <Button fx:id="btnActualizar" layoutX="305.0" layoutY="320.0" mnemonicParsing="false" onAction="#clicActualizarAdministrador" style="-fx-background-color: white;" text="Actualizar" />
       <Button fx:id="btnCancelar" layoutX="227.0" layoutY="320.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="37.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="177.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/editar.png" />
+         </image>
+      </ImageView>
    </children>    
 </AnchorPane>
