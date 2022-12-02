@@ -19,7 +19,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a registrar" textFill="WHITE">
+      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a registrar." textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font></Label>
