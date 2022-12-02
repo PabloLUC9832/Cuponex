@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/cuponex/Cuponex.java</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/empresa/FXMLGeneralEmpresa.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/empresa/FXMLFormularioEdicionEmpresa.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/cuponex/FXMLInicioSesionController.java</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/empresa/FXMLFormularioAltaEmpresa.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/promociones/FXMLEditarPromocion.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/administrador/FXMLGeneralAdministrador.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/sucursales/FXMLGeneralSucursal.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/promociones/FXMLFormularioAltaPromocion.fxml</file>
+            <file>file:/C:/Users/theiv/OneDrive/Escritorio/7/IS/Cuponex/src/promociones/FXMLGeneralPromocion.fxml</file>
+        </group>
     </open-files>
 </project-private>
