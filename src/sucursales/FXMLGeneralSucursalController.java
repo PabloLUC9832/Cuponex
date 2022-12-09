@@ -86,6 +86,7 @@ public class FXMLGeneralSucursalController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
+            /*
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaSucursal.fxml"));
             Parent ventana = (Parent) fxmlLoader.load();
             Stage stage = new Stage();            
@@ -93,6 +94,18 @@ public class FXMLGeneralSucursalController implements Initializable {
             stage.setTitle("Añadir Sucursal");
             stage.centerOnScreen();            
             stage.show();
+            */
+            FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaSucursal.fxml"));
+            Parent vistaFormulario = loadController.load();
+            FXMLFormularioAltaSucursalController controllerFormulario = loadController.getController();
+            
+            controllerFormulario.recibir(listaSucursales, tbSucursal);
+            
+            Scene escenaFormulario = new Scene(vistaFormulario);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();
             
         }catch(IOException e){
             String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
@@ -135,6 +148,8 @@ public class FXMLGeneralSucursalController implements Initializable {
                                                                    longitud,encargado,idEmpresa
                                                                    );
                 
+                controllerFormulario.recibir(listaSucursales, tbSucursal);
+                                
                 Scene escenaFormulario = new Scene(vistaFormulario);
                 Stage escenarioFormulario = new Stage();
                 escenarioFormulario.setScene(escenaFormulario);
@@ -167,6 +182,8 @@ public class FXMLGeneralSucursalController implements Initializable {
           
                 if(Utilidades.mostrarAlertaEliminacion("Elminar", "sucursal")==true){
                     consumirServicioEliminar(idSucursalSeleccionado);
+                    listaSucursales.clear();
+                    cargarInformacionSucursales();                    
                 }
                 
             }catch(Exception e){

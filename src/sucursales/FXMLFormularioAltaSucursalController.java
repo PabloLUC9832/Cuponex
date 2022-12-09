@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -51,6 +52,9 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
     private Button btnGuardar;
     @FXML
     private Button btnCancelar;
+    
+    ObservableList<Sucursal> listaSucursalesR;
+    TableView<Sucursal> tbSucursalR;    
        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,6 +121,7 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
                         , Alert.AlertType.INFORMATION);  
                 Stage stage = (Stage) this.btnGuardar.getScene().getWindow();
                 stage.close();
+                cargarInformacionSucursales();
             }else{
                 Utilidades.mostrarAlertaSimple("Error al añadir sucursal", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
@@ -176,6 +181,32 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
                     , Alert.AlertType.ERROR);
         }
         return listaEmpresa;
-    }        
+    }
+    
+    void recibir(ObservableList<Sucursal> listaSucursales, TableView<Sucursal> tbSucursal){
+        listaSucursalesR = listaSucursales;
+        tbSucursalR = tbSucursal;
+    }    
+    
+    private void cargarInformacionSucursales(){
+        String urlWS = Constantes.URL_BASE+"sucursales/all";
+        try{
+            String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
+            Gson gson = new Gson();
+            Type  listaTipoSucursal = new TypeToken<ArrayList <Sucursal> >() {}.getType();
+            ArrayList administradorWS = gson.fromJson(resultadoWS, listaTipoSucursal);
+            recibir(listaSucursalesR, tbSucursalR);
+            listaSucursalesR.clear();
+            listaSucursalesR.addAll(administradorWS);
+            tbSucursalR.setItems(listaSucursalesR);
+                    
+        }catch(Exception e){
+            e.printStackTrace();
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los médicos"
+                    , Alert.AlertType.ERROR);
+        }
+        
+    }    
+    
         
 }
