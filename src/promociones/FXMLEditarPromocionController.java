@@ -17,11 +17,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
 import pojos.Catalogo;
+import pojos.Promocion;
 import pojos.Respuesta;
 import pojos.Sucursal;
 import util.Constantes;
@@ -56,7 +58,11 @@ public class FXMLEditarPromocionController implements Initializable {
     private Button btnCancelar;
     
     private int idPromocion;
-    private boolean isEdicion = false;    
+    private boolean isEdicion = false;
+    
+    ObservableList<Promocion> listaPromocionesR;
+    TableView<Promocion> tbPromocionR;       
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -213,6 +219,7 @@ public class FXMLEditarPromocionController implements Initializable {
                         , Alert.AlertType.INFORMATION);
                 Stage stage = (Stage) this.btnActualizar.getScene().getWindow();
                 stage.close();
+                cargarInformacionPromociones();
             }else{
                 Utilidades.mostrarAlertaSimple("Error al editar la promoción", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
@@ -222,6 +229,33 @@ public class FXMLEditarPromocionController implements Initializable {
             Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
         }
                       
+    }
+    
+    void recibir(ObservableList<Promocion> listaPromociones, TableView<Promocion> tbPromocion){
+        listaPromocionesR = listaPromociones;
+        tbPromocionR = tbPromocion;
     }    
+    
+    private void cargarInformacionPromociones(){
+        
+        String urlWS = Constantes.URL_BASE+"promociones/all";
+        try{
+            String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
+            Gson gson = new Gson();
+            Type listaTipoPromocion = new TypeToken<ArrayList <Promocion>>() {}.getType();
+            ArrayList promocionWS = gson.fromJson(resultadoWS, listaTipoPromocion);
+            recibir(listaPromocionesR, tbPromocionR);
+            listaPromocionesR.clear();
+            listaPromocionesR.addAll(promocionWS);
+            tbPromocionR.setItems(listaPromocionesR);
+        }catch(Exception e){
+            e.printStackTrace();
+            Utilidades.mostrarAlertaSimple("Error de conexión", 
+                    "Por el momento no se puede obtener la información de las promociones"
+                    , Alert.AlertType.ERROR);
+        }
+                
+    }    
+    
     
 }

@@ -84,14 +84,17 @@ public class FXMLGeneralPromocionController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaPromocion.fxml"));
-            Parent ventana = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();            
-            stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir administrador");
-            stage.centerOnScreen();            
-            stage.show();
+            FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaPromocion.fxml"));
+            Parent vistaFormulario = loadController.load();
+            FXMLFormularioAltaPromocionController controllerFormulario = loadController.getController();
             
+            controllerFormulario.recibir(listaPromociones, tbPromocion);
+            
+            Scene escenaFormulario = new Scene(vistaFormulario);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();                
         }catch(IOException e){
             String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -134,6 +137,9 @@ public class FXMLGeneralPromocionController implements Initializable {
                                               costoPromocion, categoriaPromocion,idEstatus, idSucursal
                                                                    );
                 
+                controllerFormulario.recibir(listaPromociones, tbPromocion);
+
+                
                 Scene escenaFormulario = new Scene(vistaFormulario);
                 Stage escenarioFormulario = new Stage();
                 escenarioFormulario.setScene(escenaFormulario);
@@ -163,6 +169,8 @@ public class FXMLGeneralPromocionController implements Initializable {
           
                 if(Utilidades.mostrarAlertaEliminacion("Elminar", "promocion")==true){
                     consumirServicioEliminar(idPromocionSeleccionado);
+                    listaPromociones.clear();
+                    cargarInformacionPromociones();
                 }
                 
             }catch(Exception e){

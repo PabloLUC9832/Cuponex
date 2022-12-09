@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
@@ -76,6 +77,9 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
     private Label lbImagenSeleccionada;
 
     String imagen = "";
+    
+    ObservableList<Promocion> listaPromocionesR;
+    TableView<Promocion> tbPromocionR;    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -158,6 +162,7 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
                         , Alert.AlertType.INFORMATION);  
                 Stage stage = (Stage) this.btnGuardar.getScene().getWindow();
                 stage.close();
+                cargarInformacionPromociones();
             }else{
                 Utilidades.mostrarAlertaSimple("Error al añadir promoción", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
@@ -274,6 +279,32 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         //return imagen;
         
     }
+    
+    void recibir(ObservableList<Promocion> listaPromociones, TableView<Promocion> tbPromocion){
+        listaPromocionesR = listaPromociones;
+        tbPromocionR = tbPromocion;
+    }    
+    
+    private void cargarInformacionPromociones(){
+        
+        String urlWS = Constantes.URL_BASE+"promociones/all";
+        try{
+            String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
+            Gson gson = new Gson();
+            Type listaTipoPromocion = new TypeToken<ArrayList <Promocion>>() {}.getType();
+            ArrayList promocionWS = gson.fromJson(resultadoWS, listaTipoPromocion);
+            recibir(listaPromocionesR, tbPromocionR);
+            listaPromocionesR.clear();
+            listaPromocionesR.addAll(promocionWS);
+            tbPromocionR.setItems(listaPromocionesR);
+        }catch(Exception e){
+            e.printStackTrace();
+            Utilidades.mostrarAlertaSimple("Error de conexión", 
+                    "Por el momento no se puede obtener la información de las promociones"
+                    , Alert.AlertType.ERROR);
+        }
+                
+    }    
     
     
 }
