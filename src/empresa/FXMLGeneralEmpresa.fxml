@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -7,7 +12,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="empresa.FXMLGeneralEmpresaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A4962;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empresa.FXMLGeneralEmpresaController">
    <children>
       <TableView fx:id="tbEmpresa" layoutX="17.0" layoutY="160.0" prefHeight="270.0" prefWidth="667.0">
         <columns>
@@ -25,11 +30,46 @@
             <TableColumn fx:id="tcEstatus" prefWidth="102.0" text="Estatus" />
         </columns>
       </TableView>
-      <Button fx:id="btnAdd" layoutX="168.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaAdd" text="Añadir" />
-      <Button fx:id="btEdit" layoutX="324.0" layoutY="41.0" mnemonicParsing="false" onAction="#ventanaEdit" text="Editar" />
-      <Button fx:id="btnDelete" layoutX="545.0" layoutY="41.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
-      <Label layoutX="35.0" layoutY="102.0" text="Ingresa tu búsqueda" />
-      <TextField fx:id="tfBusqueda" layoutX="168.0" layoutY="98.0" prefHeight="25.0" prefWidth="359.0" promptText="Ingresa el nombre, representante o RFC de la empresa a buscar" />
+      <Button fx:id="btnAdd" layoutX="168.0" layoutY="65.0" mnemonicParsing="false" onAction="#ventanaAdd" style="-fx-background-color: white;" text="Añadir" />
+      <Button fx:id="btEdit" layoutX="324.0" layoutY="65.0" mnemonicParsing="false" onAction="#ventanaEdit" style="-fx-background-color: white;" text="Editar" />
+      <Button fx:id="btnDelete" layoutX="468.0" layoutY="65.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: white;" text="Eliminar" />
+      <Label layoutX="54.0" layoutY="119.0" text="Ingresa tu búsqueda:" textFill="WHITE" />
+      <TextField fx:id="tfBusqueda" layoutX="168.0" layoutY="115.0" prefHeight="25.0" prefWidth="359.0" promptText="Ingresa el nombre, representante o RFC de la empresa a buscar" />
+      <Label layoutX="311.0" layoutY="14.0" text="Empresas" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="37.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="292.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/editar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="137.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="438.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/eliminar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="401.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/empresas.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="16.0" layoutX="37.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/buscar.png" />
+         </image>
+      </ImageView>
    </children>    
        
 </AnchorPane>

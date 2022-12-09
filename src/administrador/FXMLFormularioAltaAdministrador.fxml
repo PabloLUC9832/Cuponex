@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -7,25 +12,38 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrador.FXMLFormularioAltaAdministradorController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A4962;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrador.FXMLFormularioAltaAdministradorController">
    <children>
-      <Label layoutX="206.0" layoutY="39.0" text="Registro de Administradores">
+      <Label layoutX="199.0" layoutY="39.0" text="Registro de Administradores" textFill="WHITE">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a registrar" />
-      <Label layoutX="39.0" layoutY="145.0" text="Nombre (s)" />
-      <Label layoutX="39.0" layoutY="200.0" text="Apellido Paterno" />
-      <Label layoutX="39.0" layoutY="253.0" text="Apellido Materno" />
-      <Label layoutX="320.0" layoutY="145.0" text="Correo Electrónico" />
-      <Label layoutX="320.0" layoutY="200.0" text="Contraseña" />
+      <Label layoutX="14.0" layoutY="90.0" text="Por favor, llena el siguiente formulario con la información del Administrador a registrar." textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label layoutX="39.0" layoutY="145.0" text="Nombre (s)" textFill="WHITE" />
+      <Label layoutX="39.0" layoutY="200.0" text="Apellido Paterno" textFill="WHITE" />
+      <Label layoutX="39.0" layoutY="253.0" text="Apellido Materno" textFill="WHITE" />
+      <Label layoutX="320.0" layoutY="145.0" text="Correo Electrónico" textFill="WHITE" />
+      <Label layoutX="320.0" layoutY="200.0" text="Contraseña" textFill="WHITE" />
       <TextField fx:id="tfNombre" layoutX="36.0" layoutY="163.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa tu nombre" />
       <TextField fx:id="tfPaterno" layoutX="37.0" layoutY="218.0" prefHeight="25.0" prefWidth="189.0" promptText="Ingresa tu apellido paterno" />
       <TextField fx:id="tfMaterno" layoutX="37.0" layoutY="270.0" prefHeight="25.0" prefWidth="189.0" promptText="Ingresa tu apellido materno" />
       <TextField fx:id="tfCorreo" layoutX="320.0" layoutY="163.0" prefHeight="25.0" prefWidth="255.0" promptText="Ingresa tu correo" />
-      <PasswordField fx:id="pfPassword" layoutX="321.0" layoutY="218.0" />
-      <Button fx:id="btnGuardar" layoutX="321.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicGuardarAdministrador" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="243.0" layoutY="323.0" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar" />
+      <PasswordField fx:id="pfPassword" layoutX="321.0" layoutY="218.0" promptText="•••••••••••••••" />
+      <Button fx:id="btnGuardar" layoutX="322.0" layoutY="320.0" mnemonicParsing="false" onAction="#clicGuardarAdministrador" style="-fx-background-color: white;" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="220.0" layoutY="320.0" mnemonicParsing="false" onAction="#clicCancelar" style="-fx-background-color: white;" text="Cancelar" />
+      <ImageView fitHeight="61.0" fitWidth="119.0" layoutX="37.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/Tickets.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="170.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/añadir.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
