@@ -14,10 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
 import pojos.Catalogo;
+import pojos.Empresa;
 import pojos.Respuesta;
 import util.Constantes;
 import util.Utilidades;
@@ -52,7 +54,10 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
     private Button btnCancelar;
     
     private int idEmpresa;
-    private boolean isEdicion = false;    
+    private boolean isEdicion = false;
+    
+    ObservableList<Empresa> listaEmpresasR;
+    TableView<Empresa> tbEmpresaR;     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -167,6 +172,7 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
                         , Alert.AlertType.INFORMATION);
                 Stage stage = (Stage) this.btnActualizar.getScene().getWindow();
                 stage.close();
+                cargarInformacionEmpresas();
             }else{
                 Utilidades.mostrarAlertaSimple("Error al editar la sucursal", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
@@ -176,7 +182,33 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
             Utilidades.mostrarAlertaSimple("Error de conexión", e.getMessage(), Alert.AlertType.ERROR);            
         }
                       
-    }      
+    }
+    
+    void recibir(ObservableList<Empresa> listaEmpresas, TableView<Empresa> tbEmpresa){
+        listaEmpresasR = listaEmpresas;
+        tbEmpresaR = tbEmpresa;
+    }
+    
+    private void cargarInformacionEmpresas(){
+        String urlWS = Constantes.URL_BASE+"empresas/all";
+        try{
+            String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
+            Gson gson = new Gson();
+            Type  listaTipoSucursal = new TypeToken<ArrayList <Empresa> >() {}.getType();
+            ArrayList administradorWS = gson.fromJson(resultadoWS, listaTipoSucursal);
+            recibir(listaEmpresasR, tbEmpresaR);
+            listaEmpresasR.clear();
+            listaEmpresasR.addAll(administradorWS);
+            tbEmpresaR.setItems(listaEmpresasR);
+                    
+        }catch(Exception e){
+            e.printStackTrace();
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los médicos"
+                    , Alert.AlertType.ERROR);
+        }
+        
+    }    
+    
     
     
 }

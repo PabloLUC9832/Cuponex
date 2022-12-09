@@ -85,13 +85,25 @@ public class FXMLGeneralEmpresaController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
+            /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
             Parent ventana = (Parent) fxmlLoader.load();
             Stage stage = new Stage();            
             stage.setScene(new Scene(ventana));
             stage.setTitle("Añadir Empresa");
             stage.centerOnScreen();            
-            stage.show();
+            stage.show();*/
+            
+            FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
+            Parent vistaFormulario = loadController.load();
+            FXMLFormularioAltaEmpresaController controllerFormulario = loadController.getController();
+            
+            controllerFormulario.recibir(listaEmpresas, tbEmpresa);
+            
+            Scene escenaFormulario = new Scene(vistaFormulario);
+            Stage escenarioFormulario = new Stage();
+            escenarioFormulario.setScene(escenaFormulario);
+            escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+            escenarioFormulario.showAndWait();               
             
         }catch(IOException e){
             String errorMessage = "El tiempo de espera se ha agotado o se perdío la conexión\n" +"con la Base Datos.";
@@ -138,6 +150,9 @@ public class FXMLGeneralEmpresaController implements Initializable {
                                               pagina,  rfc,  idEstatus   
                                             );
                 
+                controllerFormulario.recibir(listaEmpresas, tbEmpresa);
+
+                
                 Scene escenaFormulario = new Scene(vistaFormulario);
                 Stage escenarioFormulario = new Stage();
                 escenarioFormulario.setScene(escenaFormulario);
@@ -169,6 +184,8 @@ public class FXMLGeneralEmpresaController implements Initializable {
           
                 if(Utilidades.mostrarAlertaEliminacion("Elminar", "empresa")==true){
                     consumirServicioEliminar(idEmpresaSeleccionado);
+                    listaEmpresas.clear();
+                    cargarInformacionEmpresas();
                 }
                 
             }catch(Exception e){
