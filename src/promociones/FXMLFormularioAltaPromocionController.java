@@ -2,12 +2,20 @@ package promociones;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,8 +26,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import modelo.ConexionServiciosweb;
 import pojos.Catalogo;
@@ -57,7 +68,15 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
     private Button btnCancelar;
     @FXML
     private ComboBox cbSucursal;
+    @FXML
+    private Button btnSubirFoto;
+    
+    List<String> archivo;
+    @FXML
+    private Label lbImagenSeleccionada;
 
+    String imagen = "";
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tfNombre.addEventHandler(KeyEvent.KEY_TYPED, event -> soloLetras(event));
@@ -87,7 +106,9 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         Float costoPromocion = Float.valueOf(tfCostoPromocion.getText());
         Integer categoriaPromocion = Integer.parseInt(cbCategoria.getValue().toString());
         Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
-        Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());        
+        Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());
+
+        String fotoPr = imagen;
         
         Promocion promocion = new Promocion();
         promocion.setNombre(nombre);
@@ -100,7 +121,10 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         promocion.setCostoPromocion(costoPromocion);
         promocion.setCategoriaPromocion(categoriaPromocion);
         promocion.setIdEstatus(estatus);
+        promocion.setIdSucursal(sucursal);
+        promocion.setFotoPromocion(fotoPr);
         
+        System.out.println("fotoPr:::"+fotoPr);
         guardarInformacionPromocion(promocion);
         
     }
@@ -120,7 +144,9 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
                                 "costoPromocion="+promocion.getCostoPromocion()+ "&" +
                                 "categoriaPromocion="+promocion.getCategoriaPromocion()+ "&" +
                                 "idEstatus="+promocion.getIdEstatus()+ "&" +
-                                "idSucursal="+promocion.getIdSucursal()
+                                "idSucursal="+promocion.getIdSucursal()  + "&" +
+                   
+                                "fotoPromocion="+promocion.getFotoPromocion()
                                 ;
             String resultado = ConexionServiciosweb.peticionServicioPOST(urlServicio, parametros);
             Gson gson = new Gson();
@@ -211,6 +237,43 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         }
         return listaSucursal;
     }     
+
+    @FXML
+    private void subirFoto(ActionEvent event) {
+    //private String subirFoto() {
+            /*
+        FileChooser fcImagen = new FileChooser();
+        fcImagen.setInitialDirectory(new File ("C:\\"));
+        fcImagen.getExtensionFilters().addAll(new ExtensionFilter("PNG Files", "*.png","*jpg"));
+        File seletedFile = fcImagen.showOpenDialog(null);
+        System.out.println(seletedFile);
+        lbImagenSeleccionada.setText(seletedFile.getAbsolutePath());
+        */
+        //String imagen = "";
+        FileChooser fcImagen = new FileChooser();
+        File file = fcImagen.showOpenDialog(btnSubirFoto.getScene().getWindow());
+        lbImagenSeleccionada.setText(file.getAbsolutePath());        
+        Path path = Paths.get(file.getAbsolutePath());
+        try{
+            FileInputStream fileInputStream = new FileInputStream(file);
+            System.out.println("archivo|||"+file.length());            
+            //imagen = file.toString();
+            //imagen = "";
+            //byte[] arr = new byte[(int)file.length()];
+            byte[] arr = Files.readAllBytes(path);
+            //byte[] array = method(file);
+            //imagen = arr.toString();
+            //System.out.println("read:   ||"+fileInputStream.read(arr));
+            //imagen =""+fileInputStream.read(arr);
+            imagen = Arrays.toString(arr);
+            System.out.print(Arrays.toString(arr));
+        }catch(IOException e){
+            System.out.println(e);
+        }
+        
+        //return imagen;
+        
+    }
     
     
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="promociones.FXMLFormularioAltaPromocionController">
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLFormularioAltaPromocionController">
    <children>
       <Label layoutX="246.0" layoutY="14.0" text="Registro de Promociones">
          <font>
@@ -34,11 +34,14 @@
       <TextField fx:id="tfCostoPromocion" layoutX="306.0" layoutY="145.0" prefHeight="25.0" prefWidth="224.0" promptText="Ingresa el costo de la promocion" />
       <Label layoutX="307.0" layoutY="187.0" text="Categoría" />
       <ComboBox fx:id="cbCategoria" layoutX="306.0" layoutY="217.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la categoría" />
-      <Label layoutX="311.0" layoutY="286.0" text="Estatus" />
-      <ComboBox fx:id="cbEstatus" layoutX="306.0" layoutY="307.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona el estatus" />
-      <Label layoutX="311.0" layoutY="364.0" text="Sucursal" />
-      <ComboBox fx:id="cbSucursal" layoutX="306.0" layoutY="385.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la sucursal" />
-      <Button fx:id="btnGuardar" layoutX="320.0" layoutY="434.0" mnemonicParsing="false" onAction="#clicGuardarPromocion" text="Guardar" />
-      <Button fx:id="btnCancelar" layoutX="242.0" layoutY="434.0" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar" />
+      <Label layoutX="311.0" layoutY="250.0" text="Estatus" />
+      <ComboBox fx:id="cbEstatus" layoutX="306.0" layoutY="271.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona el estatus" />
+      <Label layoutX="311.0" layoutY="314.0" text="Sucursal" />
+      <ComboBox fx:id="cbSucursal" layoutX="306.0" layoutY="335.0" prefHeight="25.0" prefWidth="224.0" promptText="Selecciona la sucursal" />
+      <Label layoutX="307.0" layoutY="373.0" text="Imagen" />
+      <Button fx:id="btnSubirFoto" layoutX="301.0" layoutY="396.0" mnemonicParsing="false" onAction="#subirFoto" prefHeight="25.0" prefWidth="233.0" text="Selecciona la imagen de la promoción" />
+      <Label fx:id="lbImagenSeleccionada" layoutX="301.0" layoutY="444.0" text="Label" />
+      <Button fx:id="btnGuardar" layoutX="321.0" layoutY="487.0" mnemonicParsing="false" onAction="#clicGuardarPromocion" text="Guardar" />
+      <Button fx:id="btnCancelar" layoutX="243.0" layoutY="487.0" mnemonicParsing="false" onAction="#clicCancelar" text="Cancelar" />
    </children>    
 </AnchorPane>
