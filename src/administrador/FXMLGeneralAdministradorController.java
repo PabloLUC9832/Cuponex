@@ -150,6 +150,8 @@ public class FXMLGeneralAdministradorController implements Initializable {
                 
                 controllerFormulario.inicializarInformacionVentana(idAdministradorSeleccionado, nombre, apellidoPaterno, apellidoMaterno, correo, password);
                 
+                controllerFormulario.recibir(listaAdministradores, tbAdministrador);
+                
                 Scene escenaFormulario = new Scene(vistaFormulario);
                 Stage escenarioFormulario = new Stage();
                 escenarioFormulario.setScene(escenaFormulario);
@@ -182,6 +184,8 @@ public class FXMLGeneralAdministradorController implements Initializable {
           
                 if(Utilidades.mostrarAlertaEliminacion("Elminar", "administrador")==true){
                     consumirServicioEliminar(idAdministradorSeleccionado);
+                    listaAdministradores.clear();
+                    cargarInformacionAdministradores();
                 }
                 
             }catch(Exception e){
