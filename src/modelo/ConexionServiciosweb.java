@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class ConexionServiciosweb {
 
-    public static String peticionServicioPOST(String url,String parametros) throws IOException{       
+    public static String peticionServicioPOST(String url,String parametros) throws IOException{
         
         String resultado = "";
         URL urlAcceso = new URL(url);
@@ -133,6 +133,34 @@ public class ConexionServiciosweb {
         in.close();
         
         return response.toString();
+    }
+    
+    public static String peticionServicioPOSTImagen(String url,String parametros) throws IOException{
+        
+        String resultado = "";
+        URL urlAcceso = new URL(url);
+        HttpURLConnection conexionHTTP = (HttpURLConnection) urlAcceso.openConnection();
+        conexionHTTP.setRequestMethod("POST");
+        //conexionHTTP.setRequestProperty("Content-Type", "image/jpeg");
+        //conexionHTTP.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+        conexionHTTP.setDoOutput(true);
+        
+        OutputStream outputSalida = conexionHTTP.getOutputStream() ;
+        outputSalida.write(parametros.getBytes());
+        outputSalida.flush();
+        outputSalida.close();
+
+        int codigoRespuesta = conexionHTTP.getResponseCode();
+        System.out.println("El código de respuesta es: "+ codigoRespuesta);
+        
+        if (codigoRespuesta == HttpURLConnection.HTTP_OK) {
+            resultado = convierteStreamCadena(conexionHTTP.getInputStream());
+        }else{
+            resultado = "Error en la petición POST con código: "+codigoRespuesta;
+        }
+        
+        return resultado;
     }    
 
     

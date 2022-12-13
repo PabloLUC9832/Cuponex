@@ -67,6 +67,8 @@ public class FXMLGeneralPromocionController implements Initializable {
     private TextField tfBusqueda;
     
     private ObservableList<Promocion> listaPromociones;
+    @FXML
+    private Button btnSubirFoto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -282,6 +284,52 @@ public class FXMLGeneralPromocionController implements Initializable {
         }
         
     }    
+
+    @FXML
+    private void subirFoto(ActionEvent event) {
+        
+        int filaSeleccionada = tbPromocion.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                Integer idPromocionSeleccionada = listaPromociones.get(filaSeleccionada).getIdPromocion();
+                String nombre = listaPromociones.get(filaSeleccionada).getNombre();
+                String descripcion = listaPromociones.get(filaSeleccionada).getDescripcion() ;
+                String fechaInicio =  listaPromociones.get(filaSeleccionada).getFechaInicio() ;
+                String fechaTermino = listaPromociones.get(filaSeleccionada).getFechaTermino() ;
+                String restricciones = listaPromociones.get(filaSeleccionada).getRestricciones() ;
+                Integer tipoPromocion = listaPromociones.get(filaSeleccionada).getTipoPromocion() ;
+                String porcentaje = listaPromociones.get(filaSeleccionada).getPorcentaje() ;
+                float costoPromocion = listaPromociones.get(filaSeleccionada).getCostoPromocion() ;
+                Integer categoriaPromocion = listaPromociones.get(filaSeleccionada).getCategoriaPromocion() ;
+                Integer idEstatus = listaPromociones.get(filaSeleccionada).getIdEstatus() ;
+                Integer idSucursal = listaPromociones.get(filaSeleccionada).getIdSucursal() ;
+
+                FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLSubirFoto.fxml"));
+                Parent vistaFormulario = loadController.load();
+                FXMLSubirFotoController controllerFormulario = loadController.getController();
+                
+                controllerFormulario.inicializarInformacionVentana(idPromocionSeleccionada,  nombre);
+                                
+                Scene escenaFormulario = new Scene(vistaFormulario);
+                Stage escenarioFormulario = new Stage();
+                escenarioFormulario.setScene(escenaFormulario);
+                escenarioFormulario.initModality(Modality.APPLICATION_MODAL);
+                escenarioFormulario.showAndWait();
+                
+            }catch(IOException e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana principal -"+e, Alert.AlertType.ERROR);                
+            }
+
+
+        }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+                    , Alert.AlertType.WARNING);
+        }        
+                                
+    }
 
     
 
