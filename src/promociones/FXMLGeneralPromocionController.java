@@ -69,6 +69,8 @@ public class FXMLGeneralPromocionController implements Initializable {
     private ObservableList<Promocion> listaPromociones;
     @FXML
     private Button btnSubirFoto;
+    @FXML
+    private Button btnAsignarPromocionSucursal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -329,6 +331,18 @@ public class FXMLGeneralPromocionController implements Initializable {
                     , Alert.AlertType.WARNING);
         }        
                                 
+    }
+
+    @FXML
+    private void asignarPromocionSucursal(ActionEvent event) throws IOException {
+        FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLAsignarPromocionSucursal.fxml"));
+                Parent vistaPromocionSucursal = loadController.load();
+                FXMLAsignarPromocionSucursalController controllerAsignarPromocionSucursal = loadController.getController();
+                Scene escenaPromocionSucursal = new Scene(vistaPromocionSucursal);
+                Stage escenarioAsiganrPromocionSucursal = new Stage();
+                escenarioAsiganrPromocionSucursal.setScene(escenaPromocionSucursal);
+                escenarioAsiganrPromocionSucursal.initModality(Modality.APPLICATION_MODAL);
+                escenarioAsiganrPromocionSucursal.showAndWait();
     }
 
     

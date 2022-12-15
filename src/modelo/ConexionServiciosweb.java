@@ -135,7 +135,7 @@ public class ConexionServiciosweb {
         return response.toString();
     }
     
-    public static String peticionServicioPOSTImagen(String url,String parametros) throws IOException{
+    public static String peticionServicioPOSTImagen(String url,byte[] parametros) throws IOException{
         
         String resultado = "";
         URL urlAcceso = new URL(url);
@@ -143,11 +143,11 @@ public class ConexionServiciosweb {
         conexionHTTP.setRequestMethod("POST");
         //conexionHTTP.setRequestProperty("Content-Type", "image/jpeg");
         //conexionHTTP.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
+        conexionHTTP.setRequestProperty("Content-Type", "multipart/form-data");
         conexionHTTP.setDoOutput(true);
         
         OutputStream outputSalida = conexionHTTP.getOutputStream() ;
-        outputSalida.write(parametros.getBytes());
+        outputSalida.write(parametros);
         outputSalida.flush();
         outputSalida.close();
 
@@ -163,5 +163,5 @@ public class ConexionServiciosweb {
         return resultado;
     }    
 
-    
+
 }

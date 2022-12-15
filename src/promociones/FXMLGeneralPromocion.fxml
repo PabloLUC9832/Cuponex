@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A4962;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLGeneralPromocionController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #0A4962;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLGeneralPromocionController">
    <children>
       <TableView fx:id="tbPromocion" layoutX="17.0" layoutY="160.0" prefHeight="270.0" prefWidth="667.0">
         <columns>
@@ -30,7 +30,7 @@
       </TableView>
       <Button fx:id="btnAdd" layoutX="168.0" layoutY="72.0" mnemonicParsing="false" onAction="#ventanaAdd" style="-fx-background-color: white;" text="Añadir" />
       <Button fx:id="btEdit" layoutX="324.0" layoutY="72.0" mnemonicParsing="false" onAction="#ventanaEdit" style="-fx-background-color: white;" text="Editar" />
-      <Button fx:id="btnDelete" layoutX="468.0" layoutY="72.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: white;" text="Eliminar" />
+      <Button fx:id="btnDelete" layoutX="459.0" layoutY="72.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: white;" text="Eliminar" />
       <Label layoutX="54.0" layoutY="119.0" text="Ingresa tu búsqueda:" textFill="WHITE" />
       <TextField fx:id="tfBusqueda" layoutX="169.0" layoutY="118.0" prefHeight="25.0" prefWidth="440.0" promptText="Ingresa la fecha de inicio, fecha de termino o nombre de la promocion a buscar" />
       <Label layoutX="287.0" layoutY="14.0" text="Promociones" textFill="WHITE">
@@ -53,7 +53,7 @@
             <Image url="@../imagenes/añadir.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="439.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="427.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/eliminar.png" />
          </image>
@@ -69,6 +69,7 @@
          </image>
       </ImageView>
       <Button fx:id="btnSubirFoto" layoutX="569.0" layoutY="72.0" mnemonicParsing="false" onAction="#subirFoto" text="Subir foto" />
+      <Button fx:id="btnAsignarPromocionSucursal" layoutX="264.0" layoutY="449.0" mnemonicParsing="false" onAction="#asignarPromocionSucursal" text="Asignar promoción a sucursal" />
    </children>    
     
 </AnchorPane>

@@ -21,7 +21,7 @@ public class Promocion {
         
     }
 
-    public Promocion(Integer idPromocion, Integer idSucursal, String nombre, String descripcion, String fechaInicio, String fechaTermino, String restricciones, Integer tipoPromocion, String porcentaje, float costoPromocion, Integer categoriaPromocion, Integer idEstatus,String fotoPromocion) {
+    public Promocion(Integer idPromocion, Integer idSucursal, String nombre, String descripcion, String fechaInicio, String fechaTermino, String restricciones, Integer tipoPromocion, String porcentaje, float costoPromocion, Integer categoriaPromocion, Integer idEstatus, String fotoPromocion) {
         this.idPromocion = idPromocion;
         this.idSucursal = idSucursal;
         this.nombre = nombre;
@@ -139,6 +139,12 @@ public class Promocion {
 
     public void setFotoPromocion(String fotoPromocion) {
         this.fotoPromocion = fotoPromocion;
+    }
+    
+    @Override
+    public String toString() {
+        String idPromocionStr = Integer.toString(idPromocion);
+        return idPromocionStr;
     }
                    
 }
