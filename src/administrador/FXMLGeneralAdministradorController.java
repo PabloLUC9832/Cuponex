@@ -94,15 +94,6 @@ public class FXMLGeneralAdministradorController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaAdministrador.fxml"));
-            Parent ventana = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();            
-            stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir administrador");
-            stage.centerOnScreen();            
-            stage.show();
-            */
             FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaAdministrador.fxml"));
             Parent vistaFormulario = loadController.load();
             FXMLFormularioAltaAdministradorController controllerFormulario = loadController.getController();
@@ -182,7 +173,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
                 
                 int idAdministradorSeleccionado = listaAdministradores.get(filaSeleccionada).getIdAdministrador();
           
-                if(Utilidades.mostrarAlertaEliminacion("Elminar", "administrador")==true){
+                if(Utilidades.mostrarAlertaEliminacion("Eliminar", "administrador")==true){
                     consumirServicioEliminar(idAdministradorSeleccionado);
                     listaAdministradores.clear();
                     cargarInformacionAdministradores();
@@ -194,7 +185,7 @@ public class FXMLGeneralAdministradorController implements Initializable {
 
 
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su modificación"
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar un administrador para su eliminación"
                     , Alert.AlertType.WARNING);
         }        
         

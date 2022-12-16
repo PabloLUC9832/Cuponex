@@ -139,7 +139,7 @@ public class FXMLFormularioEdicionAdministradorController implements Initializab
                 stage.close();
                 cargarInformacionAdministradores();
             }else{
-                Utilidades.mostrarAlertaSimple("Error al editar el usuario", respuesta.getMensaje(),
+                Utilidades.mostrarAlertaSimple("Error al editar el administrador", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
             }
             

@@ -171,7 +171,7 @@ public class FXMLGeneralSucursalController implements Initializable {
                 
                 int idSucursalSeleccionado = listaSucursales.get(filaSeleccionada).getIdSucursal();
           
-                if(Utilidades.mostrarAlertaEliminacion("Elminar", "sucursal")==true){
+                if(Utilidades.mostrarAlertaEliminacion("Eliminar", "sucursal")==true){
                     consumirServicioEliminar(idSucursalSeleccionado);
                     listaSucursales.clear();
                     cargarInformacionSucursales();                    

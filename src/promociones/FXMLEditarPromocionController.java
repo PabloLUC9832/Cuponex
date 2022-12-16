@@ -107,26 +107,22 @@ public class FXMLEditarPromocionController implements Initializable {
         
         String idTipPromo = cbTipoPromocion.getValue().toString();
         String[] partsTipPromo = idTipPromo.split("-");
-        String partIDTipPromo = partsTipPromo[0];
-        String partNombreTipPromo = partsTipPromo[1];        
+        String partIDTipPromo = partsTipPromo[0];       
         
         String porcentaje = tfPorcentaje.getText();
         Float costoPromocion = Float.valueOf(tfCostoPromocion.getText());
         
         String idCatPromo = cbCategoria.getValue().toString();
         String[] partsCatPromo = idCatPromo.split("-");
-        String partIDCatPromo = partsCatPromo[0];
-        String partNombreCatPromo = partsCatPromo[1];           
+        String partIDCatPromo = partsCatPromo[0];         
         
         String idEstPromo = cbEstatus.getValue().toString();
         String[] partsEstPromo = idEstPromo.split("-");
-        String partIDEstPromo = partsEstPromo[0];
-        String partNombreEstPromo = partsEstPromo[1];        
+        String partIDEstPromo = partsEstPromo[0];     
         
         String idSucPromo = cbSucursal.getValue().toString();
         String[] partsSucPromo = idSucPromo.split("-");
-        String partIDSucPromo = partsSucPromo[0];
-        String partNombreSucPromo = partsSucPromo[1];        
+        String partIDSucPromo = partsSucPromo[0];   
         
         if(nombre.isEmpty() || descripcion.isEmpty()||restricciones.isEmpty()||idTipPromo.toString().isEmpty()||porcentaje.isEmpty() ||
                 costoPromocion.toString().isEmpty() || idCatPromo.toString().isEmpty() || idEstPromo.toString().isEmpty() || idSucPromo.toString().isEmpty()
@@ -183,7 +179,7 @@ public class FXMLEditarPromocionController implements Initializable {
             listaSucursal.addAll(catalogoWS);
         }catch(Exception e){
             e.printStackTrace();
-            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los tipos de promociones"
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las sucursales"
                     , Alert.AlertType.ERROR);
         }
         return listaSucursal;

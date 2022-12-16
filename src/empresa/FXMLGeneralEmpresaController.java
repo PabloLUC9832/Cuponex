@@ -174,7 +174,7 @@ public class FXMLGeneralEmpresaController implements Initializable {
                 
                 int idEmpresaSeleccionado = listaEmpresas.get(filaSeleccionada).getIdEmpresa();
           
-                if(Utilidades.mostrarAlertaEliminacion("Elminar", "empresa")==true){
+                if(Utilidades.mostrarAlertaEliminacion("Eliminar", "empresa")==true){
                     consumirServicioEliminar(idEmpresaSeleccionado);
                     listaEmpresas.clear();
                     cargarInformacionEmpresas();

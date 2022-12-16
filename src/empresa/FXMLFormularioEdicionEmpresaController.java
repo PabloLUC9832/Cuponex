@@ -104,7 +104,7 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
         String idEstEmpr = cbEstatus.getValue().toString();
         String[] partsEstEmpr = idEstEmpr.split("-");
         String partIDEstEmpr = partsEstEmpr[0];
-        String partNombreEstEmpr = partsEstEmpr[1];
+        //String partNombreEstEmpr = partsEstEmpr[1];
         
         
         if(nombre.isEmpty() || nombreComercial.isEmpty()||representante.isEmpty()||correo.isEmpty()||direccion.isEmpty() ||

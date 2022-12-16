@@ -102,11 +102,9 @@ public class FXMLFormularioEdicionSucursalController implements Initializable {
         String latitud = tfLatitud.getText();
         String longitud = tfLongitud.getText();
         String encargado = tfEncargado.getText();
-        Integer empresa = 0;
         String idEmpre = cbEmpresa.getValue().toString();
         String[] parts = idEmpre.split("-");
-        String partID = parts[0];
-        String partNombre = parts[1];        
+        String partID = parts[0];     
 
         if(nombre.isEmpty() || direccion.isEmpty()||tfCP.getText().isEmpty()||colonia.isEmpty()||ciudad.isEmpty() ||
                 tfTelefono.getText().isEmpty() || latitud.isEmpty() || longitud.isEmpty() || encargado.isEmpty()

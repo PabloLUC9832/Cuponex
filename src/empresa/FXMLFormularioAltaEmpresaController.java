@@ -118,7 +118,7 @@ public class FXMLFormularioAltaEmpresaController implements Initializable {
             listaCatalogo.addAll(catalogoWS);
         }catch(Exception e){
             e.printStackTrace();
-            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las promociones"
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las catalogos"
                     , Alert.AlertType.ERROR);
         }
         return listaCatalogo;
@@ -146,13 +146,13 @@ public class FXMLFormularioAltaEmpresaController implements Initializable {
             
             if (!respuesta.getError()) {
                 
-                Utilidades.mostrarAlertaSimple("Promoción añadida", "Promoción añadida correctamente "
+                Utilidades.mostrarAlertaSimple("Empresa añadida", "Empresa añadida correctamente "
                         , Alert.AlertType.INFORMATION);  
                 Stage stage = (Stage) this.btnGuardar.getScene().getWindow();
                 stage.close();
                 cargarInformacionEmpresas();
             }else{
-                Utilidades.mostrarAlertaSimple("Error al añadir promoción", respuesta.getMensaje(),
+                Utilidades.mostrarAlertaSimple("Error al añadir la empresa", respuesta.getMensaje(),
                         Alert.AlertType.ERROR);
             }              
 
@@ -182,7 +182,7 @@ public class FXMLFormularioAltaEmpresaController implements Initializable {
                     
         }catch(Exception e){
             e.printStackTrace();
-            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de los médicos"
+            Utilidades.mostrarAlertaSimple("Error de conexión", "Por el momento no se puede obtener la información de las empresas"
                     , Alert.AlertType.ERROR);
         }
         

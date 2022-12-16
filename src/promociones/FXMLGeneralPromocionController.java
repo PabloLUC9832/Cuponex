@@ -156,7 +156,7 @@ public class FXMLGeneralPromocionController implements Initializable {
 
 
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una promocion para su modificación"
                     , Alert.AlertType.WARNING);
         }          
                 
@@ -201,7 +201,7 @@ public class FXMLGeneralPromocionController implements Initializable {
             }
            
     }else{
-            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una promocion para su modificación"
                     , Alert.AlertType.WARNING);
         }
     }
@@ -215,7 +215,7 @@ public class FXMLGeneralPromocionController implements Initializable {
             try{                
                 int idPromocionSeleccionado = listaPromociones.get(filaSeleccionada).getIdPromocion();
           
-                if(Utilidades.mostrarAlertaEliminacion("Elminar", "promocion")==true){
+                if(Utilidades.mostrarAlertaEliminacion("Eliminar", "promocion")==true){
                     consumirServicioEliminar(idPromocionSeleccionado);
                     listaPromociones.clear();
                     cargarInformacionPromociones();
@@ -370,7 +370,7 @@ public class FXMLGeneralPromocionController implements Initializable {
 
 
         }else{
-            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una promocion para su modificación"
                     , Alert.AlertType.WARNING);
         }        
                                 
