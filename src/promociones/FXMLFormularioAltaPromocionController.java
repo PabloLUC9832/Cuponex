@@ -94,12 +94,33 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         String fechaTermino = fechaTerminoLD.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         
         String restricciones = tfRestricciones.getText();
-        Integer tipoPromocion = Integer.parseInt(cbTipoPromocion.getValue().toString());
+        
+        //Integer tipoPromocion = Integer.parseInt(cbTipoPromocion.getValue().toString());
+        String idTipoPromo = cbTipoPromocion.getValue().toString();
+        String[] partsTipoPromo = idTipoPromo.split("-");
+        String partIDTipoPromo = partsTipoPromo[0];
+        String partNombreTipoPromo = partsTipoPromo[1];
+        
         String porcentaje = tfPorcentaje.getText();
         Float costoPromocion = Float.valueOf(tfCostoPromocion.getText());
-        Integer categoriaPromocion = Integer.parseInt(cbCategoria.getValue().toString());
-        Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
-        Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());
+        
+        //Integer categoriaPromocion = Integer.parseInt(cbCategoria.getValue().toString());
+        String idCatPromo = cbCategoria.getValue().toString();
+        String[] partsCatPromo = idCatPromo.split("-");
+        String partIDCatPromo = partsCatPromo[0];
+        String partNombreCatPromo = partsCatPromo[1];
+        
+        //Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
+        String idEstPromo = cbEstatus.getValue().toString();
+        String[] partsEstPromo = idEstPromo.split("-");
+        String partIDEstPromo = partsEstPromo[0];
+        String partNombreEstPromo = partsEstPromo[1];        
+        
+        //Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());
+        String idSucPromo = cbSucursal.getValue().toString();
+        String[] partSucPromo = idSucPromo.split("-");
+        String partIDSucPromo = partSucPromo[0];
+        String partNombreSucPromo = partSucPromo[1]; 
         
         Promocion promocion = new Promocion();
         promocion.setNombre(nombre);
@@ -107,12 +128,16 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         promocion.setFechaInicio(fechaInicio);
         promocion.setFechaTermino(fechaTermino);
         promocion.setRestricciones(restricciones);
-        promocion.setTipoPromocion(tipoPromocion);
+        //promocion.setTipoPromocion(tipoPromocion);
+        promocion.setTipoPromocion(Integer.parseInt(partIDTipoPromo));
         promocion.setPorcentaje(porcentaje);
         promocion.setCostoPromocion(costoPromocion);
-        promocion.setCategoriaPromocion(categoriaPromocion);
-        promocion.setIdEstatus(estatus);
-        promocion.setIdSucursal(sucursal);
+        //promocion.setCategoriaPromocion(categoriaPromocion);
+        promocion.setCategoriaPromocion(Integer.parseInt(partIDCatPromo));
+        //promocion.setIdEstatus(estatus);
+        promocion.setIdEstatus(Integer.parseInt(partIDEstPromo));
+        //promocion.setIdSucursal(sucursal);
+        promocion.setIdSucursal(Integer.parseInt(partIDSucPromo));
 
         guardarInformacionPromocion(promocion);
         

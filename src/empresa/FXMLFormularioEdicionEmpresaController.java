@@ -100,7 +100,12 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
         String ciudad = tfCiudad.getText();
         Integer telefono = Integer.parseInt(tfTelefono.getText());
         String pagina = tfPagina.getText();
-        Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());     
+        //Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
+        String idEstEmpr = cbEstatus.getValue().toString();
+        String[] partsEstEmpr = idEstEmpr.split("-");
+        String partIDEstEmpr = partsEstEmpr[0];
+        String partNombreEstEmpr = partsEstEmpr[1];
+        
         
         if(nombre.isEmpty() || nombreComercial.isEmpty()||representante.isEmpty()||correo.isEmpty()||direccion.isEmpty() ||
                 cp.toString().isEmpty() || ciudad.isEmpty() || telefono.toString().isEmpty() || pagina.isEmpty()
@@ -110,7 +115,8 @@ public class FXMLFormularioEdicionEmpresaController implements Initializable {
             consumirServicioModificar(idEmpresa, nombre,  nombreComercial,
                                               representante,correo,direccion,
                                               cp, ciudad, telefono,
-                                              pagina,  estatus );            
+                                              //pagina,  estatus );
+                                              pagina,  Integer.parseInt(partIDEstEmpr) );
         }        
         
     }
