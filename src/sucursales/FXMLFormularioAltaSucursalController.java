@@ -78,8 +78,12 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
         String latitud = tfLatitud.getText();
         String longitud = tfLongitud.getText();
         String encargado = tfEncargado.getText();
-        Integer empresa = Integer.parseInt(cbEmpresa.getValue().toString());
-        
+        //Integer empresa = Integer.parseInt(cbEmpresa.getValue().toString());
+        String idEmpre = cbEmpresa.getValue().toString();
+        String[] parts = idEmpre.split("-");
+        String partID = parts[0];
+        String partNombre = parts[1];
+                
         Sucursal sucursal = new Sucursal();
         sucursal.setNombre(nombre);
         sucursal.setDireccion(direccion);
@@ -90,7 +94,8 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
         sucursal.setLatitud(latitud);
         sucursal.setLongitud(longitud);
         sucursal.setEncargado(encargado);
-        sucursal.setIdEmpresa(empresa);
+        //sucursal.setIdEmpresa(empresa);
+        sucursal.setIdEmpresa(Integer.parseInt(partID));
         
         guardarInformacionSucursal(sucursal);
         
@@ -173,7 +178,7 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
             Gson gson = new Gson();
             Type  listaEmpresas = new TypeToken<ArrayList <Empresa> >() {}.getType();
             ArrayList catalogoWS = gson.fromJson(resultadoWS, listaEmpresas);
-
+            System.out.println("||"+catalogoWS+"||");
             listaEmpresa.addAll(catalogoWS);
         }catch(Exception e){
             e.printStackTrace();
