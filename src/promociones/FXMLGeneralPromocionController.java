@@ -161,6 +161,50 @@ public class FXMLGeneralPromocionController implements Initializable {
         }          
                 
     }
+    
+    @FXML
+    private void asignarPromocionSucursal(ActionEvent event) throws IOException {
+        
+        int filaSeleccionada = tbPromocion.getSelectionModel().getSelectedIndex();
+
+        if(filaSeleccionada >= 0){
+
+            try{
+                
+                Integer idPromocionSeleccionada = listaPromociones.get(filaSeleccionada).getIdPromocion();
+                String nombre = listaPromociones.get(filaSeleccionada).getNombre();
+                String descripcion = listaPromociones.get(filaSeleccionada).getDescripcion() ;
+                String fechaInicio =  listaPromociones.get(filaSeleccionada).getFechaInicio() ;
+                String fechaTermino = listaPromociones.get(filaSeleccionada).getFechaTermino() ;
+                String restricciones = listaPromociones.get(filaSeleccionada).getRestricciones() ;
+                Integer tipoPromocion = listaPromociones.get(filaSeleccionada).getTipoPromocion() ;
+                String porcentaje = listaPromociones.get(filaSeleccionada).getPorcentaje() ;
+                float costoPromocion = listaPromociones.get(filaSeleccionada).getCostoPromocion() ;
+                Integer categoriaPromocion = listaPromociones.get(filaSeleccionada).getCategoriaPromocion() ;
+                Integer idEstatus = listaPromociones.get(filaSeleccionada).getIdEstatus() ;
+                Integer idSucursal = listaPromociones.get(filaSeleccionada).getIdSucursal() ;
+        
+        FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLAsignarPromocionSucursal.fxml"));
+                Parent vistaPromocionSucursal = loadController.load();
+                FXMLAsignarPromocionSucursalController controllerAsignarPromocionSucursal = loadController.getController();
+                
+                controllerAsignarPromocionSucursal.inicializarInformacionVentana(idPromocionSeleccionada, nombre, descripcion, fechaInicio, fechaTermino, restricciones, tipoPromocion, porcentaje, costoPromocion, categoriaPromocion, idEstatus, idSucursal);
+                
+                Scene escenaPromocionSucursal = new Scene(vistaPromocionSucursal);
+                Stage escenarioAsiganrPromocionSucursal = new Stage();
+                escenarioAsiganrPromocionSucursal.setScene(escenaPromocionSucursal);
+                escenarioAsiganrPromocionSucursal.initModality(Modality.APPLICATION_MODAL);
+                escenarioAsiganrPromocionSucursal.showAndWait();
+            
+            }catch(Exception e){
+                Utilidades.mostrarAlertaSimple("Error", "No se ha podido cargar la ventana asignar promoción a sucursal -"+e, Alert.AlertType.ERROR);    
+            }
+           
+    }else{
+            Utilidades.mostrarAlertaSimple("Selecciona un registro", "Debes seleccionar una sucursal para su modificación"
+                    , Alert.AlertType.WARNING);
+        }
+    }
 
     @FXML
     private void eliminar(ActionEvent event) {
@@ -332,21 +376,5 @@ public class FXMLGeneralPromocionController implements Initializable {
         }        
                                 
     }
-
-    @FXML
-    private void asignarPromocionSucursal(ActionEvent event) throws IOException {
-        FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLAsignarPromocionSucursal.fxml"));
-                Parent vistaPromocionSucursal = loadController.load();
-                FXMLAsignarPromocionSucursalController controllerAsignarPromocionSucursal = loadController.getController();
-                Scene escenaPromocionSucursal = new Scene(vistaPromocionSucursal);
-                Stage escenarioAsiganrPromocionSucursal = new Stage();
-                escenarioAsiganrPromocionSucursal.setScene(escenaPromocionSucursal);
-                escenarioAsiganrPromocionSucursal.initModality(Modality.APPLICATION_MODAL);
-                escenarioAsiganrPromocionSucursal.showAndWait();
-    }
-
-    
-
-    
-    
+  
 }

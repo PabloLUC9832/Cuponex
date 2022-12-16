@@ -4,15 +4,45 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="promociones.FXMLAsignarPromocionSucursalController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLAsignarPromocionSucursalController">
    <children>
-      <ComboBox fx:id="cbPromocion" layoutX="76.0" layoutY="107.0" prefWidth="150.0" />
-      <ComboBox fx:id="cbSucursal" layoutX="372.0" layoutY="107.0" prefWidth="150.0" />
-      <Label layoutX="122.0" layoutY="52.0" text="Promoción" />
-      <Label layoutX="425.0" layoutY="43.0" text="Sucursal" />
-      <Button fx:id="btnAsignar" layoutX="272.0" layoutY="236.0" mnemonicParsing="false" onAction="#AsignarPromocionSucursal" text="Asignar" />
-      <Label layoutX="133.0" layoutY="200.0" text="Haz clic en el botón para asignar la promoción a la sucursal" />
+      <ComboBox fx:id="cbSucursal" layoutX="422.0" layoutY="73.0" prefWidth="150.0" />
+      <Label layoutX="93.0" layoutY="30.0" text="Datos de la Promoción">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Button fx:id="btnAsignar" layoutX="280.0" layoutY="360.0" mnemonicParsing="false" onAction="#asignarPromocionSucursal" text="Asignar" />
+      <Label layoutX="151.0" layoutY="336.0" text="Haz clic en el botón para asignar la promoción a la sucursal" />
+      <Label layoutX="30.0" layoutY="77.0" text="idPromocion:" />
+      <Label layoutX="468.0" layoutY="30.0" text="Sucursal">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbIdPromocion" layoutX="115.0" layoutY="77.0" prefHeight="18.0" prefWidth="59.0" />
+      <Label layoutX="30.0" layoutY="112.0" text="nombre:" />
+      <Label fx:id="lbNombre" layoutX="88.0" layoutY="111.0" prefHeight="18.0" prefWidth="170.0" />
+      <Label layoutX="30.0" layoutY="150.0" text="descripción:" />
+      <Label fx:id="lbDescripcion" layoutX="109.0" layoutY="149.0" prefHeight="18.0" prefWidth="243.0" />
+      <Label layoutX="30.0" layoutY="182.0" text="fechaInicio:" />
+      <Label layoutX="270.0" layoutY="182.0" text="fechaTermino:" />
+      <Label fx:id="lbFechaInicio" layoutX="102.0" layoutY="181.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label fx:id="lbFechaTermino" layoutX="356.0" layoutY="181.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label layoutX="30.0" layoutY="218.0" text="restricciones:" />
+      <Label fx:id="lbRestricciones" layoutX="103.0" layoutY="217.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label layoutX="270.0" layoutY="217.0" text="tipoPromocion:" />
+      <Label fx:id="lbTipoPromocion" layoutX="356.0" layoutY="216.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label layoutX="30.0" layoutY="256.0" text="porcentaje:" />
+      <Label layoutX="270.0" layoutY="256.0" text="costoPromocion:" />
+      <Label fx:id="lbPorcentaje" layoutX="93.0" layoutY="255.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label fx:id="lbCostoPromocion" layoutX="369.0" layoutY="255.0" prefHeight="18.0" prefWidth="141.0" />
+      <Label layoutX="30.0" layoutY="288.0" text="categoriaPromocion:" />
+      <Label fx:id="lbCategoriaPromocion" layoutX="145.0" layoutY="287.0" prefHeight="18.0" prefWidth="59.0" />
+      <Label layoutX="225.0" layoutY="288.0" text="idEstatus:" />
+      <Label fx:id="lbIdEstatus" layoutX="285.0" layoutY="287.0" prefHeight="18.0" prefWidth="59.0" />
+      <Label layoutX="369.0" layoutY="288.0" text="idSucursal:" />
+      <Label fx:id="lbIdSucursal" layoutX="438.0" layoutY="287.0" prefHeight="18.0" prefWidth="59.0" />
    </children>
 </AnchorPane>

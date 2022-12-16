@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLSubirFotoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLSubirFotoController">
    <children>
-      <Button fx:id="btnSeleccionarFoto" layoutX="256.0" layoutY="66.0" mnemonicParsing="false" onAction="#seleccionarFoto" text="Seleccionar foto" />
-      <Label fx:id="lbFoto" layoutX="293.0" layoutY="32.0" text="Foto de" />
+      <Button fx:id="btnSeleccionarFoto" layoutX="249.0" layoutY="66.0" mnemonicParsing="false" onAction="#seleccionarFoto" text="Seleccionar foto" />
+      <Label fx:id="lbFoto" layoutX="252.0" layoutY="34.0" text="Foto Seleccionada" />
       <ImageView fx:id="imgFoto" fitHeight="258.0" fitWidth="497.0" layoutX="57.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="Guardar" layoutX="464.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnGuardarFoto" text="Guardar foto" />
+      <Button fx:id="Guardar" layoutX="258.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnGuardarFoto" text="Guardar foto" />
    </children>
 </AnchorPane>
