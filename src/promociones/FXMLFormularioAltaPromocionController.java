@@ -98,7 +98,6 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         String idTipoPromo = cbTipoPromocion.getValue().toString();
         String[] partsTipoPromo = idTipoPromo.split("-");
         String partIDTipoPromo = partsTipoPromo[0];
-        String partNombreTipoPromo = partsTipoPromo[1];
         
         String porcentaje = tfPorcentaje.getText();
         Float costoPromocion = Float.valueOf(tfCostoPromocion.getText());
@@ -106,17 +105,14 @@ public class FXMLFormularioAltaPromocionController implements Initializable {
         String idCatPromo = cbCategoria.getValue().toString();
         String[] partsCatPromo = idCatPromo.split("-");
         String partIDCatPromo = partsCatPromo[0];
-        String partNombreCatPromo = partsCatPromo[1];
                 
         String idEstPromo = cbEstatus.getValue().toString();
         String[] partsEstPromo = idEstPromo.split("-");
         String partIDEstPromo = partsEstPromo[0];
-        String partNombreEstPromo = partsEstPromo[1];        
                 
         String idSucPromo = cbSucursal.getValue().toString();
         String[] partSucPromo = idSucPromo.split("-");
         String partIDSucPromo = partSucPromo[0];
-        String partNombreSucPromo = partSucPromo[1]; 
         
         Promocion promocion = new Promocion();
         promocion.setNombre(nombre);
