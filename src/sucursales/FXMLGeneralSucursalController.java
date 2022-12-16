@@ -86,15 +86,6 @@ public class FXMLGeneralSucursalController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
-            /*
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaSucursal.fxml"));
-            Parent ventana = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();            
-            stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir Sucursal");
-            stage.centerOnScreen();            
-            stage.show();
-            */
             FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaSucursal.fxml"));
             Parent vistaFormulario = loadController.load();
             FXMLFormularioAltaSucursalController controllerFormulario = loadController.getController();
@@ -224,11 +215,9 @@ public class FXMLGeneralSucursalController implements Initializable {
         String urlWS = Constantes.URL_BASE+"sucursales/byNombre/"+nombre;
         try{
             String resultadoWS = ConexionServiciosweb.peticionServicioGET(urlWS);
-            //System.out.println("respuesta::::::: "+resultadoWS);
             Gson gson = new Gson();
             Type  listaTipoSucursal = new TypeToken<ArrayList <Sucursal> >() {}.getType();
             ArrayList sucursalWS = gson.fromJson(resultadoWS, listaTipoSucursal);
-            //listaSucursales.clear();
             listaSucursales.addAll(sucursalWS);
             tbSucursal.setItems(listaSucursales);
         }catch(Exception e){

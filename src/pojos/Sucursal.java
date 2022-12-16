@@ -122,8 +122,6 @@ public class Sucursal {
 
     @Override
     public String toString() {
-        //String idSucursalStr = Integer.toString(idSucursal);
-        //return idSucursalStr;
         return idSucursal+"-"+nombre;
     }
     

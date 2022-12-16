@@ -163,16 +163,13 @@ public class FXMLAsignarPromocionSucursalController implements Initializable {
         Float costoPromocion = Float.parseFloat(lbCostoPromocion.getText());
         Integer categoriaPromocion = Integer.parseInt(lbCategoriaPromocion.getText());
         Integer idEstatus = Integer.parseInt(lbIdEstatus.getText());
-        //Integer idEstatus = 301;
-        
-        //Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());
+
         String idSucPromo = cbSucursal.getValue().toString();
         String[] partsSucPromo = idSucPromo.split("-");
         String partIDSucPromo = partsSucPromo[0];
         String partNombreSucPromo = partsSucPromo[1];
         
         Promocion promocion = new Promocion();
-        //promocion.setIdPromocion(idPromocion);
         promocion.setNombre(nombre);
         promocion.setDescripcion(descripcion);
         promocion.setFechaInicio(fechaInicio);

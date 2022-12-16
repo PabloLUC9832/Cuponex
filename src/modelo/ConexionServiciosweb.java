@@ -141,8 +141,6 @@ public class ConexionServiciosweb {
         URL urlAcceso = new URL(url);
         HttpURLConnection conexionHTTP = (HttpURLConnection) urlAcceso.openConnection();
         conexionHTTP.setRequestMethod("POST");
-        //conexionHTTP.setRequestProperty("Content-Type", "image/jpeg");
-        //conexionHTTP.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         conexionHTTP.setRequestProperty("Content-Type", "multipart/form-data");
         conexionHTTP.setDoOutput(true);
         

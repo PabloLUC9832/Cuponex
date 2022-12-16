@@ -54,6 +54,8 @@ public class FXMLSubirFotoController implements Initializable {
     String imgB;
     private byte [] byteImage = null;
     private String imageType = "";
+    @FXML
+    private ImageView ivFoto;
     
     
     @Override
@@ -66,8 +68,7 @@ public class FXMLSubirFotoController implements Initializable {
         isEdicion = true;
         lbFoto.setText("Subir foto de la promoción: "+nombre);
     }    
-
-    //http://java-buddy.blogspot.com/2013/01/use-javafx-filechooser-to-open-image.html
+    
     @FXML
     private void seleccionarFoto(ActionEvent event) throws FileNotFoundException, IOException {
         
@@ -91,14 +92,13 @@ public class FXMLSubirFotoController implements Initializable {
                 return;
             }
             
-            //Image image1 = new Image(file.toURI().toString());
-            //this.imagen.setImage(imagen1);
+            Image image1 = new Image(file.toURI().toString());
+            this.ivFoto.setImage(image1);
             
             BufferedImage bImage = ImageIO.read(file);
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ImageIO.write(bImage, imageType, bos);
             this.byteImage = bos.toByteArray();
-                //consumirServicioSubirFoto(idPromocion, byteImage);
          }catch(Exception e){
              
          }   
@@ -113,9 +113,6 @@ public class FXMLSubirFotoController implements Initializable {
             
             String urlServicio = Constantes.URL_BASE+"promociones/subirImagen/"+idPromocion;
             
-            //System.out.println(idPromocion);
-            //System.out.println(fotoPromocion);
-            
             String parametros = "idPromocion=" + idPromocion+ "&" +
                                 "fotoPromocion=" + fotoPromocion
                                 ;
@@ -128,7 +125,6 @@ public class FXMLSubirFotoController implements Initializable {
                 Utilidades.mostrarAlertaSimple("Promoción actualizada", 
                         "Promoción actualizada correctamente "
                         , Alert.AlertType.INFORMATION);
-                //System.out.println("PARAMETROS: "+parametros);
                 Stage stage = (Stage) this.btnSeleccionarFoto.getScene().getWindow();
                 stage.close();
             }else{

@@ -94,7 +94,6 @@ public class FXMLFormularioAltaSucursalController implements Initializable {
         sucursal.setLatitud(latitud);
         sucursal.setLongitud(longitud);
         sucursal.setEncargado(encargado);
-        //sucursal.setIdEmpresa(empresa);
         sucursal.setIdEmpresa(Integer.parseInt(partID));
         
         guardarInformacionSucursal(sucursal);

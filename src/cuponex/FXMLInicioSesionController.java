@@ -78,7 +78,6 @@ public class FXMLInicioSesionController implements Initializable {
         
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLPrincipal.fxml"));
-            //Parent vista = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
             Parent vista = (Parent) fxmlLoader.load();
             
             FXMLPrincipalController administrador = fxmlLoader.getController();

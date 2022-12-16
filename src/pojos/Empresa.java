@@ -132,8 +132,6 @@ public class Empresa {
     @Override
     public String toString() {
         return idEmpresa+"-"+nombre;
-        //String idEmpres = Integer.toString(idEmpresa);
-        //return idEmpres;
     }    
        
 }

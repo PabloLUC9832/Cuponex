@@ -292,7 +292,6 @@ public class FXMLGeneralPromocionController implements Initializable {
             Gson gson = new Gson();
             Type  listaTipoPromocion = new TypeToken<ArrayList <Promocion> >() {}.getType();
             ArrayList sucursalWS = gson.fromJson(resultadoWS, listaTipoPromocion);
-            //listaSucursales.clear();
             listaPromociones.addAll(sucursalWS);
             tbPromocion.setItems(listaPromociones);
         }catch(Exception e){

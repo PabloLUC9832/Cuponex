@@ -85,14 +85,6 @@ public class FXMLGeneralEmpresaController implements Initializable {
     private void ventanaAdd(ActionEvent event) {
         
         try{
-            /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
-            Parent ventana = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();            
-            stage.setScene(new Scene(ventana));
-            stage.setTitle("Añadir Empresa");
-            stage.centerOnScreen();            
-            stage.show();*/
-            
             FXMLLoader loadController = new FXMLLoader(getClass().getResource("FXMLFormularioAltaEmpresa.fxml"));
             Parent vistaFormulario = loadController.load();
             FXMLFormularioAltaEmpresaController controllerFormulario = loadController.getController();

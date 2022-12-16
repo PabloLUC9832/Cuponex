@@ -80,10 +80,6 @@ public class FXMLPrincipalController implements Initializable {
 
     @FXML    
     private void pantallaAdministrador(ActionEvent event) throws IOException {
-
-        /*Parent fxml = FXMLLoader.load(getClass().getResource("/administrador/FXMLEditarAdministrador.fxml"));
-        contentArea.getChildren().removeAll();
-        contentArea.getChildren().setAll(fxml);*/
         cargarPantalla("administrador", "FXMLGeneralAdministrador");
     }
 
@@ -110,7 +106,6 @@ public class FXMLPrincipalController implements Initializable {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLInicioSesion.fxml"));
             Parent ventanaPrincipal = (Parent) fxmlLoader.load();
-            //Stage
             stage = new Stage();
             stage.setScene(new Scene(ventanaPrincipal));
             stage.show();

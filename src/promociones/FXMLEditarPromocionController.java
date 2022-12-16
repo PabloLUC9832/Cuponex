@@ -105,7 +105,6 @@ public class FXMLEditarPromocionController implements Initializable {
         String descripcion = tfDescripcion.getText();               
         String restricciones = tfRestricciones.getText();
         
-        //Integer tipoPromocion = Integer.parseInt(cbTipoPromocion.getValue().toString());
         String idTipPromo = cbTipoPromocion.getValue().toString();
         String[] partsTipPromo = idTipPromo.split("-");
         String partIDTipPromo = partsTipPromo[0];
@@ -114,19 +113,16 @@ public class FXMLEditarPromocionController implements Initializable {
         String porcentaje = tfPorcentaje.getText();
         Float costoPromocion = Float.valueOf(tfCostoPromocion.getText());
         
-        //Integer categoriaPromocion = Integer.parseInt(cbCategoria.getValue().toString());
         String idCatPromo = cbCategoria.getValue().toString();
         String[] partsCatPromo = idCatPromo.split("-");
         String partIDCatPromo = partsCatPromo[0];
         String partNombreCatPromo = partsCatPromo[1];           
         
-        //Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
         String idEstPromo = cbEstatus.getValue().toString();
         String[] partsEstPromo = idEstPromo.split("-");
         String partIDEstPromo = partsEstPromo[0];
         String partNombreEstPromo = partsEstPromo[1];        
         
-        //Integer sucursal = Integer.parseInt(cbSucursal.getValue().toString());
         String idSucPromo = cbSucursal.getValue().toString();
         String[] partsSucPromo = idSucPromo.split("-");
         String partIDSucPromo = partsSucPromo[0];
@@ -137,8 +133,7 @@ public class FXMLEditarPromocionController implements Initializable {
             ){
             Utilidades.mostrarAlertaSimple("Campos vacios", "Llena los campos vacios",Alert.AlertType.ERROR);            
         }else{
-            consumirServicioModificar(idPromocion,nombre, descripcion, restricciones, 
-                    //tipoPromocion,porcentaje,costoPromocion,categoriaPromocion,estatus,sucursal);            
+            consumirServicioModificar(idPromocion,nombre, descripcion, restricciones,          
                     Integer.parseInt(partIDTipPromo),porcentaje,costoPromocion,Integer.parseInt(partIDCatPromo)
                     ,Integer.parseInt(partIDEstPromo),Integer.parseInt(partIDSucPromo));            
         }        

@@ -102,7 +102,6 @@ public class FXMLFormularioEdicionSucursalController implements Initializable {
         String latitud = tfLatitud.getText();
         String longitud = tfLongitud.getText();
         String encargado = tfEncargado.getText();
-        //Integer empresa = Integer.parseInt(cbEmpresa.getValue().toString());
         Integer empresa = 0;
         String idEmpre = cbEmpresa.getValue().toString();
         String[] parts = idEmpre.split("-");
@@ -114,7 +113,6 @@ public class FXMLFormularioEdicionSucursalController implements Initializable {
             ){
             Utilidades.mostrarAlertaSimple("Campos vacios", "Llena los campos vacios",Alert.AlertType.ERROR);            
         }else{
-            //consumirServicioModificar(idSucursal,nombre, direccion, cp, colonia, ciudad, telefono,latitud,longitud,encargado,empresa);
             consumirServicioModificar(idSucursal,nombre, direccion, cp, colonia, ciudad, telefono,latitud,longitud,encargado,Integer.parseInt(partID));
         }
         

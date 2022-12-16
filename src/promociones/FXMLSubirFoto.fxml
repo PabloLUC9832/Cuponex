@@ -8,8 +8,9 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promociones.FXMLSubirFotoController">
    <children>
       <Button fx:id="btnSeleccionarFoto" layoutX="249.0" layoutY="66.0" mnemonicParsing="false" onAction="#seleccionarFoto" text="Seleccionar foto" />
-      <Label fx:id="lbFoto" layoutX="252.0" layoutY="34.0" text="Foto Seleccionada" />
+      <Label fx:id="lbFoto" layoutX="173.0" layoutY="35.0" text="Foto Seleccionada" />
       <ImageView fx:id="imgFoto" fitHeight="258.0" fitWidth="497.0" layoutX="57.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="Guardar" layoutX="258.0" layoutY="348.0" mnemonicParsing="false" onAction="#btnGuardarFoto" text="Guardar foto" />
+      <Button fx:id="Guardar" layoutX="258.0" layoutY="330.0" mnemonicParsing="false" onAction="#btnGuardarFoto" text="Guardar foto" />
+      <ImageView fx:id="ivFoto" fitHeight="150.0" fitWidth="200.0" layoutX="206.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

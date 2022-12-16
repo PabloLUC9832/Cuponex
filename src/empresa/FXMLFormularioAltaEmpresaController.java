@@ -75,7 +75,6 @@ public class FXMLFormularioAltaEmpresaController implements Initializable {
         Integer telefono = Integer.parseInt(tfTelefono.getText());
         String pagina = tfPagina.getText();
         String rfc = tfRFC.getText();
-        //Integer estatus = Integer.parseInt(cbEstatus.getValue().toString());
         Integer estatus = 0;
         if(cbEstatus.getValue().toString().equals("301-Activo")){
             estatus = 301;
